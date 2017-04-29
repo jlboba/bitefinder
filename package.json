@@ -1,5 +1,5 @@
 {
-  "name": "unit3project",
+  "name": "bitefinder",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlboba/unit3project.git"
+    "url": "git+https://github.com/jlboba/bitefinder.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jlboba/unit3project/issues"
+    "url": "https://github.com/jlboba/bitefinder/issues"
   },
-  "homepage": "https://github.com/jlboba/unit3project#readme",
+  "homepage": "https://github.com/jlboba/bitefinder#readme",
   "dependencies": {
     "express": "^4.15.2"
   }
