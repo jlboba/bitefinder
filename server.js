@@ -11,7 +11,7 @@ var session = require('express-session');
 // ===============  MIDDLEWARE ======================
 app.use(express.static('public'));
 app.use(bodyParser.json());
-server.use(session({
+app.use(session({
   secret: "ellenjerricasheilabitefinder",
   resave: false,
   saveUninitialized: false
@@ -20,6 +20,8 @@ server.use(session({
 // ===============  MIDDLEWARE ======================
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
+var sessionController = require('./controllers/sessions.js');
+app.use('/sessions', sessionController);
 
 // ================== DB CONNECTION =====================
 mongoose.connect(mongoDBURI);
