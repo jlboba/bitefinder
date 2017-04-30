@@ -12,8 +12,10 @@
     <h1>Bite Finder</h1>
     <h2>Find local restaurants</h2>
     <section ng-include="'partials/navigation.html'"></section>
-    <section ng-include="'partials/login.html'"></section>
-    <section ng-include="'partials/registration.html'"></section>
-    <section ng-include="'partials/profile.html'"></section>
+    <section ng-include="'partials/search.html'" ng-show="tab === 1"></section>
+    <section ng-include="'partials/login.html'" ng-show="tab === 2"></section>
+    <section ng-include="'partials/registration.html'" ng-show="tab === 3"></section>
+    <section ng-include="'partials/profile.html'" ng-show="tab === 4"></section> <!--Toggle ON If User is Logged in -->
+    <section ng-include="'partials/favorites.html'" ng-show="tab === 5"></section> <!--Toggle ON If User is Logged in-->
   </body>
 </html>
