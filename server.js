@@ -11,7 +11,7 @@ var session = require('express-session');
 // ===============  MIDDLEWARE ======================
 app.use(express.static('public'));
 app.use(bodyParser.json());
-server.use(session({
+app.use(session({
   secret: "ellenjerricasheilabitefinder",
   resave: false,
   saveUninitialized: false
