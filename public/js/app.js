@@ -4,6 +4,9 @@ app.controller('MainController', ['$http', function($http){
   // freezing this
   var controller = this;
 
+  // toggle navigation tabs
+  this.tab = 1;
+
   // variables
   this.newUserData = {};
 
@@ -22,9 +25,17 @@ app.controller('MainController', ['$http', function($http){
   };
 
   // object to check current session user
-  this.sessionUser = {
-
-  }
+  // this.sessionUser = {
+  //   username: req.session.currentUser.username,
+  //   password: req.session.currentUser.password,
+  //   name: req.session.currentUser.name,
+  //   city: req.session.currentUser.city,
+  //   favorites: req.session.currentUser.favorites
+  // }
+  //
+  // this.testingSession = function(){
+  //   console.log(req.session.currentUser);
+  // }
 
   // Check Login username/password info
   this.loginCheck = function(){
@@ -32,8 +43,8 @@ app.controller('MainController', ['$http', function($http){
       method: 'POST',
       url: '/sessions',
       data: {
-        this.username,
-        this.password
+        username: controller.username,
+        password: controller.password
       }
     }).then(function(response){
       console.log(response);
