@@ -3,9 +3,11 @@ var app = angular.module('BiteFinder', []);
 app.controller('MainController', ['$http', function($http){
   // freezing this
   var controller = this;
+  this.tab = 1;
 
   // variables
   this.newUserData = {};
+  this.currentUserData = {};
 
   // ajax request to create a new user
   this.createUser = function(){
@@ -32,9 +34,8 @@ app.controller('MainController', ['$http', function($http){
       method: 'POST',
       url: '/sessions',
       data: {
-        this.username,
-        this.password
-      }
+        username: this.currentUserData.username,
+        password: this.currentUserData.password  
     }).then(function(response){
       console.log(response);
     });
