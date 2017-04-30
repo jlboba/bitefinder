@@ -20,6 +20,8 @@ app.use(session({
 // ===============  MIDDLEWARE ======================
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
+var sessionController = require('./controllers/sessions.js');
+app.use('/sessions', sessionController);
 
 // ================== DB CONNECTION =====================
 mongoose.connect(mongoDBURI);

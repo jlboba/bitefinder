@@ -25,4 +25,19 @@ app.controller('MainController', ['$http', function($http){
   this.sessionUser = {
 
   }
+
+  // Check Login username/password info
+  this.loginCheck = function(){
+    $http({
+      method: 'POST',
+      url: '/sessions',
+      data: {
+        this.username,
+        this.password
+      }
+    }).then(function(response){
+      console.log(response);
+    });
+  };
+
 }]);
