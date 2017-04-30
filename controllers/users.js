@@ -17,4 +17,18 @@ router.put('/:id', function(req, res){
   });
 });
 
+// =============== DELETE ROUTE =======================
+router.delete('/:id', function(req, res){
+  User.findByIdAndRemove(req.params.id, function(error, deletedUser){
+    res.json(deletedUser);
+  });
+});
+
+// =============== RETRIEVE USER =======================
+router.get('/:id', function(req, res){
+  User.findById(req.params.id, function(error, foundUser){
+    res.json(foundUser);
+  });
+});
+
 module.exports = router;
