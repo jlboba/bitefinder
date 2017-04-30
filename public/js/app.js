@@ -25,7 +25,7 @@ app.controller('MainController', ['$http', function($http){
   this.sessionUser = {
 
   }
-  
+
   // Check Login username/password info
   this.loginCheck = function(){
     $http({
@@ -39,6 +39,5 @@ app.controller('MainController', ['$http', function($http){
       console.log(response);
     });
   };
-
 
 }]);
