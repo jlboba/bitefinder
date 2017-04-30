@@ -1,5 +1,28 @@
 var app = angular.module('BiteFinder', []);
 
 app.controller('MainController', ['$http', function($http){
-  this.foo = "bar";
+  // freezing this
+  var controller = this;
+
+  // variables
+  this.newUserData = {};
+
+  // ajax request to create a new user
+  this.createUser = function(){
+    $http({
+      method:'POST',
+      url: '/users',
+      data: controller.newUserData
+    }).then(function(response){
+      console.log(controller.newUserData);
+      controller.newUserData = {}; // empties the array after the user is created
+    }, function(error){
+        console.log(error);
+    });
+  };
+
+  // object to check current session user
+  this.sessionUser = {
+
+  }
 }]);

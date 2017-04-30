@@ -1,10 +1,12 @@
 // ================ DEPENDENCIES ===================
 var express = require('express');
-var router = express.Router();
+var bcrypt = require('bcrypt');
 var User = require('../models/users.js');
+var router = express.Router();
 
 // ===============  CREATE ROUTE ===================
 router.post('/', function(req,res){
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)); // encrypt the password
   User.create(req.body, function(err, newUser){
     res.json(newUser);
   });
