@@ -12,9 +12,13 @@ router.get('/', function(req, res){
 // ===============  CREATE SESSION ROUTE (Login) ===================
 router.post('/', function(req,res){
   User.findOne({username:req.body.username}, function(err, foundUser){
-    if (bcrypt.compareSync(req.body.password,foundUser.password)){
-      req.session.currentuser = foundUser;
-      res.json(req.session.currentuser);
+    if (foundUser) {
+      if (bcrypt.compareSync(req.body.password,foundUser.password)){
+        req.session.sessionUser = foundUser;
+        res.json(req.session.sessionUser);
+      } else {
+        res.send('failed')
+      }
     } else {
       res.send('failed')
     }

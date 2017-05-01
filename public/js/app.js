@@ -11,8 +11,10 @@ app.controller('MainController', ['$http', function($http){
   this.newUserData = {};
   this.currentUserData = {}; // ng-model data from login form (just UN & PW)
   this.sessionUser = {}; // full user object of the user logged in
-  this.userLoggedIn = false;
+  this.userLoginFailed = false;
   this.editingUser = false;
+  this.editUserData = {};
+
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -71,10 +73,11 @@ app.controller('MainController', ['$http', function($http){
       }
     }).then(function(response){
       if (response.data === 'failed'){
+        controller.userLoginFailed = true;
         console.log('Username/Password not match');
       } else {
         controller.sessionUser = response.data;
-        controller.userLoggedIn = true;
+        controller.userLoginFailed = false;
         console.log(controller.sessionUser);
         // send to landing page
       }
@@ -89,22 +92,49 @@ app.controller('MainController', ['$http', function($http){
       url: '/sessions'
     }).then(function(response){
       controller.sessionUser = {};
-      controller.userLoggedIn = false;
-      console.log(response.data);
-<<<<<<< HEAD
-      // send to landing page
-=======
-      controller.sessionUser = {};
+      controller.currentUserData = {};
       console.log(controller.sessionUser);
->>>>>>> 5abade78f2f65af7a8dc42971f63543a70d8e427
+      // send to landing page
     }, function(){
       console.log('Failed in log out');
     });
   };
 
   // Edit User HTTP PUT request
-  this.editUser = function(id){
+  this.editUser = function(){
     this.editingUser = true;
+    this.editUserData = {
+      username: controller.sessionUser.username,
+      password: controller.sessionUser.password,
+      name: controller.sessionUser.name,
+      city: controller.sessionUser.city
+    }
+  };
+  // Cancel Edit User
+  this.cancelEditUser = function(){
+    //console.log('Cancel Edit Session:', controller.sessionUser);
+    //console.log('Cancel Edit Edit:', controller.editUserData);
+    this.editingUser = false;
+    this.editUserData = {};
+  };
+  //
+  this.updateUser = function(){
+    //console.log('Update User ', controller.editUserData);
+    $http({
+      method: 'PUT',
+      url: '/users/' + controller.sessionUser._id,
+     data: controller.editUserData
+   }).then(function(response){
+      //console.log(response.data);
+      controller.editingUser = false;
+      controller.sessionUser = {
+        username: response.data.username,
+        password: response.data.password,
+        name: response.data.name,
+        city: response.data.city };
+   }, function(){
+     console.log('Failed in update user');
+   })
   };
 
   // Delete User HTTP DELETE request
