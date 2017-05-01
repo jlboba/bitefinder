@@ -78,5 +78,16 @@ app.controller('MainController', ['$http', function($http){
       console.log('Failed in login check');
     });
   };
+  // Logout
+  this.logOut = function(){
+    $http({
+      method: 'DELETE',
+      url: '/sessions'
+    }).then(function(response){
+      console.log(response.data);
+    }, function(){
+      console.log('Failed in log out');
+    });
+  };
 
 }]);
