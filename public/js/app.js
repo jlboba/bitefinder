@@ -11,6 +11,8 @@ app.controller('MainController', ['$http', function($http){
   this.newUserData = {};
   this.currentUserData = {};
   this.sessionUser = {};
+  this.userLoggedIn = false;
+  this.editingUser = false;
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -72,7 +74,9 @@ app.controller('MainController', ['$http', function($http){
         console.log('Username/Password not match');
       } else {
         controller.sessionUser = response.data;
+        controller.userLoggedIn = true;
         console.log(controller.sessionUser);
+        // send to landing page
       }
     }, function(){
       console.log('Failed in login check');
@@ -84,20 +88,23 @@ app.controller('MainController', ['$http', function($http){
       method: 'DELETE',
       url: '/sessions'
     }).then(function(response){
+      controller.sessionUser = {};
+      controller.userLoggedIn = false;
       console.log(response.data);
+      // send to landing page
     }, function(){
       console.log('Failed in log out');
     });
   };
 
   // Edit User HTTP PUT request
-  this.editUser = function(){
-
-  }
+  this.editUser = function(id){
+    this.editingUser = true;
+  };
 
   // Delete User HTTP DELETE request
   this.deleteUser = function(){
-    
+
   }
 
 }]);

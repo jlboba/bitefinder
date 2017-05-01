@@ -1,10 +1,11 @@
-<section class="wrapper">
-  <h1>username</h1>
+<section class="wrapper" ng-show="main.userLoggedIn">
+  <h1>{{main.username}}</h1>
   <div class="thumbnail">
     <div id="profile-info">
-      <h2>Name</h2>
-      <h3>current city</h3>
-      <a class-"button" ng-click="main.editUser();">Edit Profile</a>
+      <h2>{{main.name}}</h2>
+      <h3 ng-if="!main.editingUser">{{main.city}}</h3>
+      <!-- <a class-"button" ng-click="main.editUser(main.sessionUser._id);">Edit Profile</a> -->
+      <button type="button" ng-click="main.editUser()">Edit Profile</button>
       <a class="button" ng-click="main.logOut();">Log Out</a>
     </div>
     <div id="delete-account">
