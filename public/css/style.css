@@ -79,19 +79,30 @@ nav > ul {
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  border: 5px solid #000000;
+  border: 5px solid #444A9E;
 }
 
 /* =============== SEARCH =============== */
 .wrapper {
-  border: 5px solid black;
+  border: 5px solid #444A9E;
   border-radius: 5px;
   width: 95%;
   margin: 0 auto;
   padding: 2%;
 }
-#search {
+#search-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+#search-input {
   width: 100%;
+  margin-right: 10px;
+}
+#fork {
+  height: 130px;
+  margin-left: 10px;
 }
 #location-results {
   background-color: #CCCCCC;
@@ -105,11 +116,12 @@ nav > ul {
 }
 
 /* =============== SEARCH RESULTS =============== */
-.result {
+
+/*.result {
   width: 100px;
   height: 100px;
-  background-color: #CCCCCC;
-}
+  background-color: rgba(68, 74, 158, 0.4); RGBA with opacity for #444A9E
+}*/
 
 /* =============== VIEW RESTAURANT =============== */
 #modal {
@@ -152,6 +164,56 @@ footer > p {
 .footerlink {
   text-decoration: none;
   color: red;
+}
+
+/* =============== MOBILE+ =============== */
+@media (min-width: 400px) {
+  header {
+    padding: 15px;
+  }
+  header > h1 {
+    font-size: 3rem;
+  }
+  header > p {
+    font-size: 1.8rem;
+  }
+  #fish {
+    width: 140px;
+    height: 140px;
+  }
+  #fish > img {
+    width: 136px;
+    margin-top: 22px;
+  }
+  nav > ul {
+    padding: 0;
+  }
+  .navlink {
+    padding: 12px;
+    font-size: 14px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+}
+
+@media (min-width: 550px) {
+  .navlink {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
+
+@media (min-width: 750px) {
+  .navlink {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper {
+    max-width: 935px;
+  }
 }
 
 /* =============== COLOR DICTIONARY =============== */
