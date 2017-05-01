@@ -3,19 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>BITEFINDER</title>
+    <link href="https://fonts.googleapis.com/css?family=Rancho|Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <script src="/js/directives.js" charset="utf-8"></script>
   </head>
   <body ng-controller="MainController as main">
-    <h1>Bite Finder</h1>
-    <h2>Find local restaurants</h2>
-    <section ng-include="'partials/navigation.html'"></section>
-    <section ng-include="'partials/search.html'" ng-show="main.tab === 1"></section>
-    <section ng-include="'partials/login.html'" ng-show="main.tab === 2"></section>
-    <section ng-include="'partials/registration.html'" ng-show="main.tab === 3"></section>
-    <section ng-include="'partials/profile.html'" ng-show="main.tab === 4"></section> <!--Toggle ON If User is Logged in -->
-    <section ng-include="'partials/favorites.html'" ng-show="main.tab === 5"></section> <!--Toggle ON If User is Logged in-->
+    <header ng-include="'partials/header.html'"></header>
+    <nav ng-include="'partials/navigation.html'"></nav>
+    <main>
+      <section ng-include="'partials/search.html'" ng-show="main.tab === 1"></section>
+      <section ng-include="'partials/login.html'" ng-show="main.tab === 2"></section>
+      <section ng-include="'partials/registration.html'" ng-show="main.tab === 3"></section>
+      <section ng-include="'partials/profile.html'" ng-show="main.tab === 4"></section> <!--Toggle ON If User is Logged in -->
+      <section ng-include="'partials/favorites.html'" ng-show="main.tab === 5"></section> <!--Toggle ON If User is Logged in-->
+      <footer ng-include="'partials/footer.html'"></footer>
+    </main>
   </body>
 </html>
