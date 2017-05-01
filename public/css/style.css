@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: 'Droid Serif', serif;
   color: #000000;
 }
 main {
