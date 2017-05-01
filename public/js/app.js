@@ -9,8 +9,8 @@ app.controller('MainController', ['$http', function($http){
 
   // variables
   this.newUserData = {};
-  this.currentUserData = {};
-  this.sessionUser = {};
+  this.currentUserData = {}; // ng-model data from login form (just UN & PW)
+  this.sessionUser = {}; // full user object of the user logged in
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -97,7 +97,15 @@ app.controller('MainController', ['$http', function($http){
 
   // Delete User HTTP DELETE request
   this.deleteUser = function(){
-    
+    $http({
+      method: 'DELETE',
+      url: '/users/' + controller.sessionUser._id
+    }).then(function(response){
+      controller.logOut(); // When profile is deleted, Log Out of the current session
+      controller.sessionUser = {}; // and clear the controller var of the session user's info
+    }, function(){
+      console.log('failed to delete user');
+    });
   }
 
 }]);
