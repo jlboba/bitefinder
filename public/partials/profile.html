@@ -1,12 +1,12 @@
-<section class="wrapper" ng-show="main.userLoggedIn">
-  <h1>User Profile</h1>
+
+<section class="wrapper" ng-if="main.sessionUser.username">
+  <h1>{{main.sessionUser.username}}</h1>
   <div class="thumbnail">
     <h1>{{main.username}}</h1>
     <div id="profile-info">
-      <h2>{{main.name}}</h2>
-      <h3 ng-if="!main.editingUser">{{main.city}}</h3>
-      <!-- <a class-"button" ng-click="main.editUser(main.sessionUser._id);">Edit Profile</a> -->
-      <button type="button" ng-click="main.editUser()">Edit Profile</button>
+      <h2>{{main.sessionUser.name}}</h2>
+      <h3>{{main.sessionUser.city}}</h3>
+      <a class-"button" ng-click="main.editUser();">Edit Profile</a>
       <a class="button" ng-click="main.logOut();">Log Out</a>
     </div>
     <div id="delete-account">
@@ -16,4 +16,8 @@
       <a class="button" ng-click="main.deleteUser();">Yes, I'm Sure</a>
     </div>
   </div>
+</section>
+
+<section ng-if="!main.sessionUser.username">
+  <h1>Looks like you're not logged in!</h1>
 </section>

@@ -91,7 +91,12 @@ app.controller('MainController', ['$http', function($http){
       controller.sessionUser = {};
       controller.userLoggedIn = false;
       console.log(response.data);
+<<<<<<< HEAD
       // send to landing page
+=======
+      controller.sessionUser = {};
+      console.log(controller.sessionUser);
+>>>>>>> 5abade78f2f65af7a8dc42971f63543a70d8e427
     }, function(){
       console.log('Failed in log out');
     });
