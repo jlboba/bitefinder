@@ -162,7 +162,7 @@ app.controller('MainController', ['$http', function($http){
       controller.sessionUser = {}; // and clear the controller var of the session user's info
     }, function(){
       console.log('failed to delete user');
-    });
+    })
   }
 
 }])
