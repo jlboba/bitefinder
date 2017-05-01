@@ -90,4 +90,14 @@ app.controller('MainController', ['$http', function($http){
     });
   };
 
+  // Edit User HTTP PUT request
+  this.editUser = function(){
+
+  }
+
+  // Delete User HTTP DELETE request
+  this.deleteUser = function(){
+    
+  }
+
 }]);
