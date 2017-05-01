@@ -11,6 +11,10 @@ app.controller('MainController', ['$http', function($http){
   this.newUserData = {};
   this.currentUserData = {}; // ng-model data from login form (just UN & PW)
   this.sessionUser = {}; // full user object of the user logged in
+  this.userLoginFailed = false;
+  this.editingUser = false;
+  this.editUserData = {};
+
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -69,10 +73,13 @@ app.controller('MainController', ['$http', function($http){
       }
     }).then(function(response){
       if (response.data === 'failed'){
+        controller.userLoginFailed = true;
         console.log('Username/Password not match');
       } else {
         controller.sessionUser = response.data;
+        controller.userLoginFailed = false;
         console.log(controller.sessionUser);
+        // send to landing page
       }
     }, function(){
       console.log('Failed in login check');
@@ -84,9 +91,10 @@ app.controller('MainController', ['$http', function($http){
       method: 'DELETE',
       url: '/sessions'
     }).then(function(response){
-      console.log(response.data);
       controller.sessionUser = {};
+      controller.currentUserData = {};
       console.log(controller.sessionUser);
+      // send to landing page
     }, function(){
       console.log('Failed in log out');
     });
@@ -94,8 +102,40 @@ app.controller('MainController', ['$http', function($http){
 
   // Edit User HTTP PUT request
   this.editUser = function(){
-
-  }
+    this.editingUser = true;
+    this.editUserData = {
+      username: controller.sessionUser.username,
+      password: controller.sessionUser.password,
+      name: controller.sessionUser.name,
+      city: controller.sessionUser.city
+    }
+  };
+  // Cancel Edit User
+  this.cancelEditUser = function(){
+    //console.log('Cancel Edit Session:', controller.sessionUser);
+    //console.log('Cancel Edit Edit:', controller.editUserData);
+    this.editingUser = false;
+    this.editUserData = {};
+  };
+  //
+  this.updateUser = function(){
+    //console.log('Update User ', controller.editUserData);
+    $http({
+      method: 'PUT',
+      url: '/users/' + controller.sessionUser._id,
+     data: controller.editUserData
+   }).then(function(response){
+      //console.log(response.data);
+      controller.editingUser = false;
+      controller.sessionUser = {
+        username: response.data.username,
+        password: response.data.password,
+        name: response.data.name,
+        city: response.data.city };
+   }, function(){
+     console.log('Failed in update user');
+   })
+  };
 
   // Delete User HTTP DELETE request
   this.deleteUser = function(){

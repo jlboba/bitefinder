@@ -1,12 +1,27 @@
+
 <section class="wrapper" ng-if="main.sessionUser.username">
-  <h1>{{main.sessionUser.username}}</h1>
+
   <div class="thumbnail">
-    <div id="profile-info">
-      <h2>{{main.sessionUser.name}}</h2>
-      <h3>{{main.sessionUser.city}}</h3>
-      <a class-"button" ng-click="main.editUser();">Edit Profile</a>
+    <div id="profile-info" ng-if="!main.editingUser">
+      <h3>User Profile</p>
+      <p>Username: {{main.sessionUser.username}}</p>
+      <p>Display Name: {{main.sessionUser.name}}</p>
+      <p>City: {{main.sessionUser.city}}</p>
+      <button type="button" ng-click="main.editUser();">Edit Profile</button>
       <a class="button" ng-click="main.logOut();">Log Out</a>
     </div>
+
+    <div id="profile-info" ng-if="main.editingUser">
+      <h3>Edit User Profile</p>
+      <p>Username: <input type="text" ng-model="main.editUserData.username" value="main.editUserData.username"></p>
+      <p>Password: <input type="password" ng-model="main.editUserData.password" value="main.editUserData.password"></p>
+      <p>Display Name: <input type="text" ng-model="main.editUserData.name" value="main.editUserData.name"></p>
+      <p>City: <input type="text" ng-model="main.editUserData.city" value="main.editUserData.city"> </p>
+      <button type="button" ng-click="main.updateUser();">Update Profile</button>
+      <button type="button" ng-click="main.cancelEditUser();">Cancel</button>
+      <a class="button" ng-click="main.logOut();">Log Out</a>
+    </div>
+
     <div id="delete-account">
       <p class="warning">Delete Account</p>
       <p>Are you sure?</p>
@@ -17,5 +32,6 @@
 </section>
 
 <section ng-if="!main.sessionUser.username">
-  <h1>Looks like you're not logged in!</h1>
+  <!-- <h1>Looks like you're not logged in!</h1> -->
+  <h1>Please Login!</h1>
 </section>
