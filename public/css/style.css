@@ -15,15 +15,18 @@ main {
 
 /* =============== HEADER =============== */
 header {
-  background-color: #fcedea;
+  background-color: #F09784;
   padding: 20px;
   text-align: center;
 }
 header > h1 {
-  line-height: 2;
+  font-weight: bolder;
   letter-spacing: 7px;
 }
 header > p {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 #fish {
   background-color: #FFFFFF;
@@ -40,21 +43,25 @@ header > p {
 
 /* =============== NAV =============== */
 nav {
-  padding: 30px;
+  background-color: #fcedea;
 }
 nav > ul {
   display: flex;
-  line-height: 3;
   flex-wrap: wrap;
   justify-content: space-around;
   list-style: none;
 }
 .navlink {
-  background-color: #FFFFFF;
+  background-color: #fcedea;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 4px;
+  font-size: 24px;
+  border: none;
   cursor: pointer;
 }
 .navlink:hover {
-  background-color: #fcedea;
+  background-color: #FFFFFF;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
