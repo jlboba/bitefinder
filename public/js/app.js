@@ -9,6 +9,8 @@ app.controller('MainController', ['$http', function($http){
 
   // variables
   this.newUserData = {};
+  this.currentUserData = {};
+  this.sessionUser = {};
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -51,10 +53,10 @@ app.controller('MainController', ['$http', function($http){
   //   city: req.session.currentUser.city,
   //   favorites: req.session.currentUser.favorites
   // }
-  //
-  // this.testingSession = function(){
-  //   console.log(req.session.currentUser);
-  // }
+
+  this.testingSession = function(){
+    console.log(req.session.currentUser);
+  }
 
   // Check Login username/password info
   this.loginCheck = function(){
@@ -62,11 +64,18 @@ app.controller('MainController', ['$http', function($http){
       method: 'POST',
       url: '/sessions',
       data: {
-        username: controller.username,
-        password: controller.password
+        username: controller.currentUserData.username,
+        password: controller.currentUserData.password
       }
     }).then(function(response){
-      console.log(response);
+      if (response.data === 'failed'){
+        console.log('Username/Password not match');
+      } else {
+        controller.sessionUser = response.data;
+        console.log(controller.sessionUser);
+      }
+    }, function(){
+      console.log('Failed in login check');
     });
   };
 

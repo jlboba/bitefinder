@@ -14,9 +14,9 @@ router.post('/', function(req,res){
   User.findOne({username:req.body.username}, function(err, foundUser){
     if (bcrypt.compareSync(req.body.password,foundUser.password)){
       req.session.currentuser = foundUser;
-      res.send('login successfully')
+      res.json(req.session.currentuser);
     } else {
-      res.send('username/password are not match')
+      res.send('failed')
     }
   });
 });
