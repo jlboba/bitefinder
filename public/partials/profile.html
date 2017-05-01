@@ -1,6 +1,7 @@
 <section class="wrapper" ng-show="main.userLoggedIn">
-  <h1>{{main.username}}</h1>
+  <h1>User Profile</h1>
   <div class="thumbnail">
+    <h1>{{main.username}}</h1>
     <div id="profile-info">
       <h2>{{main.name}}</h2>
       <h3 ng-if="!main.editingUser">{{main.city}}</h3>
