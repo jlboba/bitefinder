@@ -15,6 +15,7 @@ main {
 }
 input {
   display: block;
+  font-size: 18px;
 }
 
 /* =============== HEADER =============== */
@@ -87,27 +88,66 @@ nav > ul {
   border-radius: 5px;
   width: 95%;
   margin: 0 auto;
-  padding: 3%;
+  padding: 2%;
+}
+#search {
+  width: 100%;
 }
 #location-results {
   background-color: #CCCCCC;
   border-radius: 5px;
 }
 #location-results > ul {
+  margin: 0;
   list-style: none;
   text-align: center;
   padding: 10px;
 }
 
+/* =============== SEARCH RESULTS =============== */
+.result {
+  width: 100px;
+  height: 100px;
+  background-color: #CCCCCC;
+}
+
+/* =============== VIEW RESTAURANT =============== */
+#modal {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: auto;
+}
+#modal-box {
+  background-color: #FFFFFF;
+  margin: 100px auto;
+  padding: 5vw;
+  height: 80vw;
+  width: 80vw;
+  border-radius: 5px;
+}
+#modal-box > img {
+  height: 200px;
+}
 /* =============== LOG IN =============== */
 
 
 /* =============== FOOTER =============== */
 footer {
-  margin-top: 400px;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
   text-align: center;
   background-color: #fcedea;
   padding: 10px;
+}
+footer > p {
+  margin: 0;
+  font-size: 20px;
 }
 .footerlink {
   text-decoration: none;
