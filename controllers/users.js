@@ -1,10 +1,12 @@
 // ================ DEPENDENCIES ===================
 var express = require('express');
-var router = express.Router();
+var bcrypt = require('bcrypt');
 var User = require('../models/users.js');
+var router = express.Router();
 
 // ===============  CREATE ROUTE ===================
 router.post('/', function(req,res){
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)); // encrypt the password
   User.create(req.body, function(err, newUser){
     res.json(newUser);
   });
@@ -12,6 +14,9 @@ router.post('/', function(req,res){
 
 // =============== PUT ROUTE =======================
 router.put('/:id', function(req, res){
+  if (req.body.password !== undefined) {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)); // encrypt the password
+  }
   User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(error, updatedUser){
     res.json(updatedUser)
   });
@@ -27,6 +32,7 @@ router.delete('/:id', function(req, res){
 // =============== RETRIEVE USER =======================
 router.get('/:id', function(req, res){
   User.findById(req.params.id, function(error, foundUser){
+
     res.json(foundUser);
   });
 });

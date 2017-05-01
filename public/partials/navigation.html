@@ -1,0 +1,8 @@
+<ul>
+  <li><a ng-click="main.tab = 1" class="navlink" ng-class="{ tab: main.tab == 1 }">Search</a></li>
+                                             <!-- Toggle these buttons if a user is logged in: -->
+  <li><a ng-click="main.tab = 2" class="navlink" ng-class="{ tab: main.tab == 2 }">Login</a></li> <!-- ng-hide="main.currentUser" -->
+  <li><a ng-click="main.tab = 3" class="navlink" ng-class="{ tab: main.tab == 3 }">Register</a></li> <!-- ng-hide="main.currentUser" -->
+  <li><a ng-click="main.tab = 4" class="navlink" ng-class="{ tab: main.tab == 4 }">Profile</a></li> <!-- ng-show="main.currentUser" -->
+  <li><a ng-click="main.tab = 5" class="navlink" ng-class="{ tab: main.tab == 5 }">Favorites</a></li> <!-- ng-show="main.currentUser" -->
+</ul>

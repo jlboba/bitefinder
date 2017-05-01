@@ -1,0 +1,17 @@
+
+<div class="wrapper">
+
+<form ng-submit="main.loginCheck()" ng-if="!main.sessionUser.username">
+  <input type="text" name="username" placeholder="username" ng-model="main.currentUserData.username">
+  <input type="password" name="password" placeholder="password" ng-model="main.currentUserData.password">
+  <input type="submit" name="" value="Login">
+</form>
+
+<section ng-if="main.userLoginFailed">
+  <p>Username/Password not match</p>
+</section>
+<section ng-if="!main.userLoginFailed && main.sessionUser.username">
+  <p>Welcome</p>
+</section>
+
+</div>
