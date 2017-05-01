@@ -5,7 +5,9 @@ var userSchema = mongoose.Schema({
   password: {type:String, required:true},
   name: {type: String},
   city: {type: String},
-  favorites: [String]
+  favorites: [String],
+  latitude: {type: String},
+  longitude: {type: String}
 });
 
 module.exports = mongoose.model('User', userSchema);
