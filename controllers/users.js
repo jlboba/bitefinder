@@ -14,6 +14,9 @@ router.post('/', function(req,res){
 
 // =============== PUT ROUTE =======================
 router.put('/:id', function(req, res){
+  if (req.body.password !== undefined) {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)); // encrypt the password
+  }
   User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(error, updatedUser){
     res.json(updatedUser)
   });
@@ -29,6 +32,7 @@ router.delete('/:id', function(req, res){
 // =============== RETRIEVE USER =======================
 router.get('/:id', function(req, res){
   User.findById(req.params.id, function(error, foundUser){
+
     res.json(foundUser);
   });
 });
