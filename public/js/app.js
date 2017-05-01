@@ -14,7 +14,6 @@ app.controller('MainController', ['$http', function($http){
   this.userLoginFailed = false;
   this.editingUser = false;
   this.editUserData = {};
-  this.newPassword = '';
 
 
   // geolocator method to grab user's latitude and longitude
@@ -121,24 +120,10 @@ app.controller('MainController', ['$http', function($http){
   //
   this.updateUser = function(){
     //console.log('Update User ', controller.editUserData);
-    if (controller.newPassword !== '') {
-      controller.submitUserData = {
-        username: controller.editUserData.username,
-        password: controller.newPassword,
-        name: controller.editUserData.name,
-        city: controller.editUserData.city
-      }
-    } else {
-      controller.submitUserData = {
-        username: controller.editUserData.username,
-        name: controller.editUserData.name,
-        city: controller.editUserData.city
-      }
-    }
     $http({
       method: 'PUT',
       url: '/users/' + controller.sessionUser._id,
-     data: controller.submitUserData
+     data: controller.editUserData
    }).then(function(response){
       //console.log(response.data);
       controller.editingUser = false;
