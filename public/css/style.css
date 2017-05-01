@@ -13,21 +13,26 @@ body {
 main {
   background-color: #FFFFFF;
 }
+input {
+  display: block;
+}
 
 /* =============== HEADER =============== */
 header {
-  background-color: #F09784;
+  background-color: #3db1c3;
+  color: #FFFFFF;
   padding: 20px;
   text-align: center;
 }
 header > h1 {
   font-weight: bolder;
   letter-spacing: 7px;
+  margin-top: 1em;
 }
 header > p {
-  font-size: 16px;
+  font-size: 26px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
 }
 #fish {
   background-color: #FFFFFF;
@@ -44,38 +49,57 @@ header > p {
 
 /* =============== NAV =============== */
 nav {
-  background-color: #fcedea;
+  background-color: #FFFFFF;
 }
 nav > ul {
+  margin: 0;
+  line-height: 5;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   list-style: none;
 }
 .navlink {
-  background-color: #fcedea;
-  margin: 0;
-  padding: 0;
-  letter-spacing: 4px;
+  background-color: #ff5e4c;
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #FFFFFF;
+  letter-spacing: 5px;
   font-size: 24px;
-  border: none;
   cursor: pointer;
 }
 .navlink:hover {
-  background-color: #FFFFFF;
+  background-color: #cccccc;
+  color: #000000;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  box-shadow: 0px 0px 3px 3px #000000;
+  border: 5px solid #000000;
 }
-
 
 /* =============== SEARCH =============== */
-#fork {
-  height: 200px;
+.wrapper {
+  border: 5px solid black;
+  border-radius: 5px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 3%;
+}
+#location-results {
+  background-color: #CCCCCC;
+  border-radius: 5px;
+}
+#location-results > ul {
+  list-style: none;
+  text-align: center;
+  padding: 10px;
 }
 
-
+/* =============== LOG IN =============== */
 
 
 /* =============== FOOTER =============== */
@@ -92,6 +116,11 @@ footer {
 
 /* =============== COLOR DICTIONARY =============== */
 
+/*Fish: #ff6c57
+Nav Buttons: #ff5e4c
+Header: #3db1c3*/
+
+
 /* #F09784 Piranha Coral <<<<<<<<<< PIRANHA ICON >>>>>>>>> */
 /* #FAD8D1 Light Coral */
 /* #fcedea Lightest Coral */
@@ -99,6 +128,7 @@ footer {
 /* #444A9E Pantone "Dazzling Blue" */
 /* #F77924 Pantone "Orange Popsicle" */
 /* #59C9D5 Pantone "Blue Radiance" */
+/* Dark teal: #129baf */
 /* #784067 Pantone "Grape Kiss" */
 /* #00939A Pantone "Viridian Green" */
 /* #83B14F Pantone "Greenery" */

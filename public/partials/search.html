@@ -1,14 +1,16 @@
-<section class="wrapper">
-  <h1>Search Restaurants by Location</h1>
-  <img src="img/fork.png" alt="Fork and spoon" id="fork">
-  <div class="thumbnail">
-    <div id="location-query">
+<section class="wrapper container">
+  <div class="row">
+    <div class="nine columns">
+      <h1 id="search-title">Search Restaurants by Location</h1>
       <h2>Enter City Name</h2>
-      <form>
-        <input type="text" placeholder="City Name">
-        <input type="submit" value="Search">
-      </form>
     </div>
+    <img src="img/fork.png" alt="Fork and spoon" id="fork" class="three columns">
+  </div>
+  <div class="row">
+      <form>
+        <input type="text" placeholder="City Name" class="twelve columns">
+        <input type="submit" value="Search" id="search">
+      </form>
     <div id="location-results">
       <ul>
         <li>ng-repeat a location result</li>
