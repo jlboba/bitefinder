@@ -85,6 +85,8 @@ app.controller('MainController', ['$http', function($http){
       url: '/sessions'
     }).then(function(response){
       console.log(response.data);
+      controller.sessionUser = {};
+      console.log(controller.sessionUser);
     }, function(){
       console.log('Failed in log out');
     });
