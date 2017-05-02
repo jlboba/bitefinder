@@ -20,7 +20,7 @@
   </section>
   <section class="wrapper">
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
-      <h2 ng-click="zomato.showRestaurantDetail(restaurant.restaurant.id);">{{restaurant.restaurant.name}}</h2>
+      <h2 ng-click="zomato.showRestaurantDetail($index);">{{restaurant.restaurant.name}}</h2>
     </div> <!-- ng-repeat through an array of search results -->
   </section>
   <section id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></section>
