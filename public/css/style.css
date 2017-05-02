@@ -86,7 +86,7 @@ nav > ul {
   color: #FFFFFF;
 }
 .navlink:hover {
-  background-color: #cccccc;
+  background-color: #EEEEEE;
   color: #000000;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
@@ -123,7 +123,7 @@ h3 {
   margin-right: 15px;
 }
 #location-results {
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
   border-radius: 5px;
   margin-top: 25px;
 }
@@ -137,6 +137,33 @@ h3 {
 /* =============== SEARCH RESULTS =============== */
 #gallery {
   box-shadow: 0px 0px 6px 6px #3db1c3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.result {
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 20px;
+  cursor: pointer;
+  width: 90vw;
+  min-width: 280px;
+  max-width: 522px;
+  max-height: 200px;
+}
+.result:hover {
+  background-color: #fcedea;
+}
+.result:hover p:first-of-type {
+  color: #ff5e4c;
+}
+.result > p {
+  line-height: 1.5;
+}
+.result > p:first-of-type {
+  font-size: 24px;
 }
 
 /* =============== VIEW RESTAURANT =============== */
@@ -216,6 +243,37 @@ footer > p {
   footer > p {
     font-size: 12px;
   }
+  #gallery {
+    box-shadow: 0px 0px 6px 6px #3db1c3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  /*======== INHERITED CSS FROM ABOVE ========*/
+  /*.result {
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    margin: 5px auto;
+    padding: 20px;
+    cursor: pointer;
+    width: 90vw;
+    min-width: 280px;
+    max-width: 522px;
+    max-height: 200px;
+  }
+  .result:hover {
+    background-color: #fcedea;
+  }
+  .result:hover p:first-of-type {
+    color: #ff5e4c;
+  }
+  .result > p {
+    line-height: 1.5;
+  }
+  .result > p:first-of-type {
+    font-size: 24px;
+  }*/
 }
 
 /* =============== DESKTOP (> 1200) =============== */
