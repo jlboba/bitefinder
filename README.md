@@ -27,6 +27,4 @@
 <h1>Wire Frames</h1>
 <p>We began developing a design for this page in mobile view. The layout is completely vertical. We decided right away on having a dynamic navigation bar, with a total of five different nav buttons. Although five exist, only three are viewed at once. When a user signs into their session, two of the nav buttons toggle into view (Profile and Favorites), while another two toggle out of view (Login and Register).</p>
 <img src="/public/img/readme/wireframe1.png">
-<img src="/public/img/readme/wireframe2.png">
-<img src="/public/img/readme/wireframe3.png">
 <img src="/public/img/readme/wireframe4.png">
