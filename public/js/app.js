@@ -11,6 +11,7 @@ app.controller('MainController', ['$http', function($http){
   this.newUserData = {};
   this.currentUserData = {}; // ng-model data from login form (just UN & PW)
   this.sessionUser = {}; // full user object of the user logged in
+  this.sessionActive = false; // boolean variable for toggling session views
   this.userLoginFailed = false;
   this.editingUser = false;
   this.editUserData = {};
@@ -65,6 +66,7 @@ app.controller('MainController', ['$http', function($http){
       } else {
         controller.sessionUser = response.data;
         controller.userLoginFailed = false;
+        controller.sessionActive = true;
         console.log(controller.sessionUser);
         // send to landing page
       }
@@ -80,6 +82,7 @@ app.controller('MainController', ['$http', function($http){
     }).then(function(response){
       controller.sessionUser = {};
       controller.currentUserData = {};
+      controller.sessionActive = false;
       console.log(controller.sessionUser);
       // send to landing page
     }, function(){
