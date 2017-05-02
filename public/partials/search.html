@@ -1,15 +1,15 @@
 <section class="wrapper container">
-  <div class="row">
-    <div class="ten columns">
-      <h3 id="search-title">Search by Location</h3>
+  <div id="search-container">
+    <img src="img/fork.png" alt="Fork and spoon" id="fork">
+    <div id="search-form">
+      <h3>Search by Location</h3>
       <form>
-        <input type="text" placeholder="Enter City Name" id="search">
+        <input type="text" placeholder="Enter City Name" id="search-input">
         <input type="submit" value="Search">
       </form>
     </div>
-    <img src="img/fork.png" alt="Fork and spoon" id="fork" class="two columns">
   </div>
-  <div class="row">
+  <div>
     <div id="location-results">
       <ul>
         <li>ng-repeat a location result</li>
@@ -20,11 +20,11 @@
   </div>
 </section>
 <section class="container">
-  <div class="row">
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div> <!-- ng-repeat through an array of search results -->
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
+  <div id="gallery">
+    <div ng-click="main.viewRestaurant();" class="result"></div> <!-- ng-repeat through an array of search results -->
+    <div ng-click="main.viewRestaurant();" class="result"></div>
+    <div class="result" ng-click="main.viewRestaurant();"></div>
+    <div class="result" ng-click="main.viewRestaurant();"></div>
   </div>
 </section>
 <section id="modal" ng-if="main.isViewRestaurantActive"> <!--  SHOW MODAL to Inspect One Restaurant's Details  -->
