@@ -166,6 +166,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
 
   // variables
   this.locationSuggestions = [];
+  this.foundRestaurants = [];
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -198,7 +199,8 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         method: "GET",
         url: "/zomato/restaurants/" + id
       }).then(function(response){
-        console.log(response.data);
+        controller.foundRestaurants = response.data.restaurants;
+        console.log(controller.foundRestaurants);
       }, function(error){
         console.log(error);
       })
