@@ -1,6 +1,6 @@
 var app = angular.module('BiteFinder', []);
 
-app.controller('MainController', ['$http', function($http){
+app.controller('MainController', ['$http', '$scope', function($http, $scope){
   // freezing this
   var controller = this;
 
@@ -158,16 +158,36 @@ app.controller('MainController', ['$http', function($http){
       console.log('failed to delete user');
     });
   }
+}]);
 
-  // makes zomato request on click
-  this.zomato = function(){
+app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
+  // freezing this
+  var controller = this;
+
+  // variables
+  this.locationSuggestions = [];
+
+  // searches for restauruants within a location via long/lat
+  this.longLat = function(){
     $http({
       method: 'GET',
-      url: '/zomato/' + controller.sessionUser.latitude + '/' + controller.sessionUser.longitude
+      url: '/zomato/' + $scope.$parent.main.sessionUser.latitude + '/' + $scope.$parent.main.sessionUser.longitude
     }).then(function(response){
         console.log(response);
     }, function(){
         console.log('error');
     })
-  }
-}]);
+  };
+
+    // searches for a list of cities via a string query
+    this.searchCities = function(){
+      $http({
+        method: 'GET',
+        url: '/zomato/' + controller.cityInput
+      }).then(function(response){
+          controller.locationSuggestions = response.data.location_suggestions;
+      }, function(){
+          console.log('error');
+      })
+    };
+}])
