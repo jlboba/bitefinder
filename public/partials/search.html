@@ -1,10 +1,10 @@
-<section class="wrapper">
+<section class="wrapper" ng-controller="ZomatoController as zomato">
   <div id="search-container">
     <img src="img/fork.png" alt="Fork and spoon" id="fork">
     <div id="search-form">
       <h3>Search by Location</h3>
-      <form>
-        <input type="text" placeholder="Enter City Name" id="search-input">
+      <form ng-submit="zomato.searchCities()">
+        <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
         <input type="submit" value="Search">
       </form>
     </div>
@@ -12,9 +12,7 @@
   <div>
     <div id="location-results">
       <ul>
-        <li>ng-repeat a location result</li>
-        <li>ng-repeat a location result</li>
-        <li>ng-repeat a location result</li>
+        <li ng-repeat="location in zomato.locationSuggestions">{{location.name}}</li>
       </ul>
     </div>
   </div>

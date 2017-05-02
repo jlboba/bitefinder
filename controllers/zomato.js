@@ -1,8 +1,11 @@
+// ================== DEPENDENCIES =====================
 var express = require('express');
 var request = require('request');
 var router = express.Router();
 require('dotenv/config');
 
+// ================== API REQUESTS =====================
+// searches for restauruants within a location via long/lat
 router.get('/:lat/:long', function(req, res, next) {
   request({
     uri: 'https://developers.zomato.com/api/v2.1/geocode?lat=' + req.params.lat + '&lon=' + req.params.long,
@@ -10,4 +13,13 @@ router.get('/:lat/:long', function(req, res, next) {
   }).pipe(res);
 });
 
+// searches for a list of cities via a string query
+router.get('/:cityInput', function(req, res, next){
+  request({
+    uri:'https://developers.zomato.com/api/v2.1/cities?q=' + req.params.cityInput,
+    headers: {'user-key':process.env.ZOMATO_API_KEY}
+  }).pipe(res);
+});
+
+// ===================== EXPORTS ========================
 module.exports = router;
