@@ -38,12 +38,17 @@ app.controller('MainController', ['$http', function($http){
   // ajax request to create a new user
   this.createUser = function(){
     // http request to create the user
+    var tempPassword = controller.newUserData.password
     $http({
       method:'POST',
       url: '/users',
       data: controller.newUserData
     }).then(function(response){
       controller.newUserData = {}; // empties the array after the user is created
+      controller.currentUserData.username = response.data.username;
+      controller.currentUserData.password = tempPassword;
+      controller.tab = 2;
+      controller.loginCheck();
     }, function(error){
         console.log(error);
     });
