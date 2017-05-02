@@ -1,36 +1,35 @@
-<section class="wrapper" ng-controller="ZomatoController as zomato">
-  <div id="search-container">
-    <img src="img/fork.png" alt="Fork and spoon" id="fork">
-    <div id="search-form">
-      <h3>Search by Location</h3>
-      <form ng-submit="zomato.searchCities()">
-        <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
-        <input type="submit" value="Search">
-      </form>
+<section ng-controller="ZomatoController as zomato">
+  <section class="wrapper">
+    <div id="search-container">
+      <img src="img/fork.png" alt="Fork and spoon" id="fork">
+      <div id="search-form">
+        <h3>Search by Location</h3>
+        <form ng-submit="zomato.searchCities()">
+          <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
+          <input type="submit" value="Search">
+        </form>
+      </div>
     </div>
-  </div>
-  <div>
-    <div id="location-results">
-      <ul>
-        <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
-      </ul>
+    <div>
+      <div id="location-results">
+        <ul>
+          <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
-<section>
-  <div id="gallery">
-    <div ng-click="main.viewRestaurant();" class="result"></div> <!-- ng-repeat through an array of search results -->
-    <div ng-click="main.viewRestaurant();" class="result"></div>
-    <div class="result" ng-click="main.viewRestaurant();"></div>
-    <div class="result" ng-click="main.viewRestaurant();"></div>
-  </div>
-</section>
-<section id="modal" ng-if="main.isViewRestaurantActive"> <!--  SHOW MODAL to Inspect One Restaurant's Details  -->
-  <div id="modal-box">
-    <img src="/img/fork.png" alt="Fork and Spoon">
-    <h2>Here's A Restaurant</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <button class="button">Add To Favorites</button>
-    <button class="button">Close</button>
-  </div>
+  </section>
+  <section class="wrapper">
+    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
+      {{restaurant.restaurant.name}}
+    </div> <!-- ng-repeat through an array of search results -->
+  </section>
+  <section id="modal" ng-if="main.isViewRestaurantActive"> <!--  SHOW MODAL to Inspect One Restaurant's Details  -->
+    <div id="modal-box">
+      <img src="/img/fork.png" alt="Fork and Spoon">
+      <h2>Here's A Restaurant</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <button class="button">Add To Favorites</button>
+      <button class="button">Close</button>
+    </div>
+  </section>
 </section>
