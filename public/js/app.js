@@ -186,8 +186,21 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         url: '/zomato/' + controller.cityInput
       }).then(function(response){
           controller.locationSuggestions = response.data.location_suggestions;
+          console.log(response.data);
       }, function(){
           console.log('error');
       })
     };
+
+    // searches for a list of restaurants within a city by city ID
+    this.findRestaurants = function(id){
+      $http({
+        method: "GET",
+        url: "/zomato/restaurants/" + id
+      }).then(function(response){
+        console.log(response.data);
+      }, function(error){
+        console.log(error);
+      })
+    }
 }])

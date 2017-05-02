@@ -12,7 +12,7 @@
   <div>
     <div id="location-results">
       <ul>
-        <li ng-repeat="location in zomato.locationSuggestions">{{location.name}}</li>
+        <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
       </ul>
     </div>
   </div>
