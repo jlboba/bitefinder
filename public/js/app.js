@@ -167,6 +167,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // variables
   this.locationSuggestions = [];
   this.foundRestaurants = [];
+  this.isViewRestaurantActive = false;
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
