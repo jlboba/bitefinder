@@ -205,5 +205,10 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       }, function(error){
         console.log(error);
       })
+    };
+
+    // saves a restaurant to a user's favorites
+    this.saveRestaurant = function(id){
+      
     }
 }])
