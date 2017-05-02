@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 2;
 }
 body {
   /*font-family: 'Open Sans', sans-serif;*/
@@ -34,9 +35,12 @@ header > h1 {
   margin-top: 1em;
 }
 header > p {
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 5px;
+  width: 285px;
+  margin: 0 auto;
+
 }
 #fish {
   background-color: #FFFFFF;
@@ -68,14 +72,18 @@ nav > ul {
 .navlink {
   background-color: #ff5e4c;
   text-transform: uppercase;
-  border-radius: 30px;
-  padding: 14px;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: #FFFFFF;
   letter-spacing: 5px;
-  font-size: 14px;
   cursor: pointer;
+  border-radius: 30px;
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  margin: 5px 15px 5px 15px;
+  color: #FFFFFF;
 }
 .navlink:hover {
   background-color: #cccccc;
@@ -91,14 +99,20 @@ nav > ul {
   box-shadow: 0px 0px 6px 6px #444A9E;
   border-radius: 5px;
   width: 95%;
+  max-width: 855px;
   margin: 0 auto;
   padding: 2%;
 }
 #search-container {
+  width: 286px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+}
+h3 {
+  font-size: 28px;
 }
 #search-input {
   width: 100%;
@@ -110,6 +124,7 @@ nav > ul {
 #location-results {
   background-color: #CCCCCC;
   border-radius: 5px;
+  margin-top: 25px;
 }
 #location-results > ul {
   margin: 0;
@@ -161,7 +176,7 @@ footer {
 }
 footer > p {
   margin: 0;
-  font-size: 20px;
+  font-size: 14px;
   min-width: 315px;
 
 }
@@ -170,48 +185,43 @@ footer > p {
   color: red;
 }
 
-/* =============== MOBILE < 500px (Skeleton Mobile Breakpoint) =============== */
-
-@media (max-width: 549px){
+/* =============== MOBILE (> 600) =============== */
+@media (min-width: 600px){
   header > p {
-    font-size: 20px;
-    width: 195px;
-    margin: 0 auto;
+    width: 100%;
+    font-size: 18px;
+  }
+  #search-container {
+    width: 100%;
+  }
+}
+
+/* =============== TABLET (> 900) =============== */
+@media (min-width: 900px){
+  .navlink {
+    width: auto;
+    font-size: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   #fork {
     height: 100px;
   }
-  #search-container {
-    max-width: 335px;
-    margin: 0 auto;
+  h3 {
+    font-size: 24px;
+  }
+  input {
+    font-size: 14px;
+  }
+  footer > p {
+    font-size: 12px;
   }
 }
-@media (max-width: 749px){
-  nav {
-    width: 300px;
-    margin: 0 auto;
-  }
-  .navlink {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-  }
-  #fish {
-    width: 200px;
-    height: 200px;
-  }
-  #fish > img {
-    width: 197px;
-    margin-top: 32px;
-    margin-left: .5px;
-  }
-}
-@media (min-width: 750px){
 
-}
+/* =============== DESKTOP (> 1200) =============== */
+
 
 /* =============== COLOR DICTIONARY =============== */
 
