@@ -9,6 +9,7 @@ body {
   /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Droid Serif', serif;
   color: #000000;
+  min-width: 315px;
 }
 main {
   background-color: #FFFFFF;
@@ -22,16 +23,18 @@ input {
 header {
   background-color: #3db1c3;
   color: #FFFFFF;
-  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 5px;
   text-align: center;
 }
 header > h1 {
   font-weight: bolder;
+  font-size: 28px;
   letter-spacing: 7px;
   margin-top: 1em;
 }
 header > p {
-  font-size: 26px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 5px;
 }
@@ -39,22 +42,23 @@ header > p {
   background-color: #FFFFFF;
   border-radius: 50%;
   margin: 0 auto;
-  width: 200px;
-  height: 200px;
+  width: 130px;
+  height: 130px;
 }
 #fish > img {
-  width: 197px;
-  margin-top: 32px;
+  width: 126px;
+  margin-top: 22px;
   margin-left: .5px;
 }
 
 /* =============== NAV =============== */
 nav {
   background-color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 nav > ul {
   margin: 0;
-  line-height: 5;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -65,12 +69,12 @@ nav > ul {
   background-color: #ff5e4c;
   text-transform: uppercase;
   border-radius: 30px;
-  padding: 20px;
+  padding: 14px;
   margin-left: 5px;
   margin-right: 5px;
   color: #FFFFFF;
   letter-spacing: 5px;
-  font-size: 24px;
+  font-size: 14px;
   cursor: pointer;
 }
 .navlink:hover {
@@ -79,12 +83,12 @@ nav > ul {
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  border: 5px solid #444A9E;
+  box-shadow: 0px 0px 6px 6px #444A9E;
 }
 
 /* =============== SEARCH =============== */
 .wrapper {
-  border: 5px solid #444A9E;
+  box-shadow: 0px 0px 6px 6px #444A9E;
   border-radius: 5px;
   width: 95%;
   margin: 0 auto;
@@ -98,11 +102,10 @@ nav > ul {
 }
 #search-input {
   width: 100%;
-  margin-right: 10px;
 }
 #fork {
   height: 130px;
-  margin-left: 10px;
+  margin-right: 15px;
 }
 #location-results {
   background-color: #CCCCCC;
@@ -150,70 +153,64 @@ nav > ul {
 
 /* =============== FOOTER =============== */
 footer {
-  position: fixed;
   width: 100vw;
-  bottom: 0;
   text-align: center;
   background-color: #fcedea;
+  margin-top: 80px;
   padding: 10px;
 }
 footer > p {
   margin: 0;
   font-size: 20px;
+  min-width: 315px;
+
 }
 .footerlink {
   text-decoration: none;
   color: red;
 }
 
-/* =============== MOBILE+ =============== */
-@media (min-width: 400px) {
-  header {
-    padding: 15px;
-  }
-  header > h1 {
-    font-size: 3rem;
-  }
+/* =============== MOBILE < 500px (Skeleton Mobile Breakpoint) =============== */
+
+@media (max-width: 549px){
   header > p {
-    font-size: 1.8rem;
+    font-size: 20px;
+    width: 195px;
+    margin: 0 auto;
+  }
+  #fork {
+    height: 100px;
+  }
+  #search-container {
+    max-width: 335px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 749px){
+  nav {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .navlink {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
   }
   #fish {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
   }
   #fish > img {
-    width: 136px;
-    margin-top: 22px;
-  }
-  nav > ul {
-    padding: 0;
-  }
-  .navlink {
-    padding: 12px;
-    font-size: 14px;
-    margin-right: 2px;
-    margin-left: 2px;
+    width: 197px;
+    margin-top: 32px;
+    margin-left: .5px;
   }
 }
+@media (min-width: 750px){
 
-@media (min-width: 550px) {
-  .navlink {
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-}
-
-@media (min-width: 750px) {
-  .navlink {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .wrapper {
-    max-width: 935px;
-  }
 }
 
 /* =============== COLOR DICTIONARY =============== */
