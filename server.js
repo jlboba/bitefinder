@@ -24,6 +24,8 @@ var sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
 var zomatoController = require('./controllers/zomato.js');
 app.use('/zomato', zomatoController);
+var reviewController = require('./controllers/review.js');
+app.use('/review', reviewController);
 
 // ================== DB CONNECTION =====================
 mongoose.connect(mongoDBURI);
