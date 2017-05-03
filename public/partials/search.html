@@ -11,14 +11,28 @@
       </div>
     </div>
     <div>
-      <div id="location-results">
+      <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
         <ul>
           <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="wrapper" id="gallery">
+  <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
+    <div id="filter">
+      <h3>Narrow Down By Type</h3>
+      <ul>
+        <li ng-click="zomato.cuisineSearch = 'all'">All</li>
+        <li ng-click="zomato.cuisineSearch = 'american'">American</li>
+        <li ng-click="zomato.cuisineSearch = 'breakfast'">Breakfast</li>
+        <li ng-click="zomato.cuisineSearch = 'vegetarian'">Vegetarian</li>
+        <li ng-click="zomato.cuisineSearch = 'mexican'">Mexican</li>
+        <li ng-click="zomato.cuisineSearch = 'pizza'">Pizza</li>
+        <li ng-click="zomato.cuisineSearch = 'sushi'">Sushi</li>
+        <li ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</li>
+      </ul>
+      <button ng-click="zomato.findRestaurantsByCuisine()">Filter</button>
+    </div>
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);">
       <p>
         {{restaurant.restaurant.name}}
