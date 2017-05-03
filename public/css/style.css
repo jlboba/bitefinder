@@ -166,7 +166,7 @@ h3 {
 #filter {
   width: 100%;
 }
-.result {
+.result, .favorite {
   background-color: #EEEEEE;
   border-radius: 5px;
   margin: 5px auto;
@@ -177,16 +177,16 @@ h3 {
   max-width: 522px;
   max-height: 200px;
 }
-.result:hover {
+.result:hover, .favorite:hover {
   background-color: #fcedea;
 }
-.result:hover p:first-of-type {
+.result:hover p:first-of-type, .favorite:hover p:first-of-type {
   color: #ff5e4c;
 }
-.result > p {
+.result > p, .favorite > p {
   line-height: 1.5;
 }
-.result > p:first-of-type {
+.result > p:first-of-type, .favorite > p:first-of-type {
   font-size: 18px;
 }
 
@@ -326,13 +326,6 @@ footer > p {
   footer > p {
     font-size: 12px;
   }
-  #gallery {
-    box-shadow: 0px 0px 6px 6px #3db1c3;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
   input[type=submit], input[type=text], input[type=password] {
     font-size: 12px;
   }
@@ -351,6 +344,9 @@ footer > p {
   #modal-box {
     margin: auto;
     margin-top: 45px;
+  }
+ .result {
+    width: 380px;
   }
   #location-results * li {
     font-size: 12px;
