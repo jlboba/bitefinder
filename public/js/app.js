@@ -169,6 +169,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.foundRestaurants = [];
   this.isViewRestaurantActive = false;
   this.viewRestaurantInd = null;
+  this.userReview = {};
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -263,8 +264,43 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isFavoriteRestaurant = true;
     this.viewRestaurantInd = ind;
     this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
-    console.log(ind);
-    //console.log(this.restaurantDetail);
+    //console.log($scope.$parent.main.sessionUser._id);
+    //console.log(this.restaurantDetail.id);
+    $http({
+      method: "GET",
+      url: "/review/" + $scope.$parent.main.sessionUser._id +"/" + this.restaurantDetail.id
+    }).then(function(response){
+      //console.log('Review ', response);
+      controller.userReview = response.data;
+      //console.log(controller.foundReview);
+    }, function(error){
+      console.log(error);
+    })
   }
+  // save or update user review
+  this.saveReview = function(id){
+    if (id === undefined){
+      // create the user review
+      $http({
+        method: 'POST',
+        url: '/review',
+        data: {
+          userId: $scope.$parent.main.sessionUser._id,
+          restaurantId: controller.restaurantDetail.id,
+          comments: controller.userReview.comments
+        }
+      }).then(function(response){
+        console.log(response.data);
+      }, function(err){
+        console.log('Failed in creating new user review');
+      })
+
+    } else {
+      console.log('Update Review');
+    }
+  };
+
+
+
 
 }]);
