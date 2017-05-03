@@ -33,9 +33,8 @@ router.put('/:id', function(req, res){
 });
 
 // =============== DELETE ROUTE =======================
-router.delete('/favorites/:id', function(req, res){
-  console.log(req.body);
-  User.findByIdAndUpdate(req.params.id, { $pull: {"favorites":{"id": req.body.restaurantId}}}, function(err, foundUser){
+router.delete('/favorites/:id/:restaurantId', function(req, res){
+  User.findByIdAndUpdate(req.params.id, { $pull: {"favorites":{"id": req.params.restaurantId}}}, {new:true}, function(err, foundUser){
       res.json(foundUser);
   });
 });
