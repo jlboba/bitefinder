@@ -20,7 +20,7 @@
   </div>
   <div class="wrapper" id="gallery">
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
-      <p ng-click="zomato.showRestaurantDetail(restaurant.restaurant.id);">
+      <p ng-click="zomato.showRestaurantDetail($index);">
         {{restaurant.restaurant.name}}
       </p>
       <p>
