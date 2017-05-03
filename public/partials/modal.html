@@ -2,9 +2,16 @@
   <div id="modal-box">
     <img src="/img/fork.png" alt="Fork and Spoon">
     <!-- DETAILS FOR SPECIFIC RESTAURANT -->
-    <h2>Here's A Restaurant</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2>{{zomato.restaurantDetail.name}}</h2>
+    <p>{{zomato.restaurantDetail.location.address}} <br/>
+        Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
+        Average Cost for Two: ${{zomato.restaurantDetail.
+average_cost_for_two}} <br/>
+        Price Range: {{zomato.restaurantDetail.price_range}} <br/>
+        User Rating: {{zomato.restaurantDetail.user_rating.votes}} votes<br/> {{zomato.restaurantDetail.user_rating.aggregate_rating}} <br/>
+        {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
+    </p>
     <!-- BUTTONS -->
     <button class="button">Add To Favorites</button>
-    <button class="button">Close</button>
+    <button class="button" ng-click="zomato.closeRestaurantDetail()">Close</button>
   </div>

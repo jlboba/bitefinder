@@ -206,4 +206,18 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         console.log(error);
       })
     }
+
+
+    this.showRestaurantDetail = function(ind){
+      this.isViewRestaurantActive = true;
+      this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
+      console.log(this.restaurantDetail);
+    };
+
+    this.closeRestaurantDetail = function(){
+      this.isViewRestaurantActive = false;
+    };
+
+
+
 }])
