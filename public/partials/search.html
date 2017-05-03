@@ -1,38 +1,54 @@
-<section class="wrapper container">
-  <div class="row">
-    <div class="ten columns">
-      <h3 id="search-title">Search by Location</h3>
-      <form>
-        <input type="text" placeholder="Enter City Name" id="search">
-        <input type="submit" value="Search">
-      </form>
+<section ng-controller="ZomatoController as zomato">
+  <div class="wrapper">
+    <div id="search-container">
+      <img src="img/fork.png" alt="Fork and spoon" id="fork">
+      <div id="search-form">
+        <h3>Search by Location</h3>
+        <form ng-submit="zomato.searchCities()">
+          <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
+          <input type="submit" value="Search">
+        </form>
+      </div>
     </div>
-    <img src="img/fork.png" alt="Fork and spoon" id="fork" class="two columns">
-  </div>
-  <div class="row">
-    <div id="location-results">
-      <ul>
-        <li>ng-repeat a location result</li>
-        <li>ng-repeat a location result</li>
-        <li>ng-repeat a location result</li>
-      </ul>
+    <div>
+      <div id="location-results">
+        <ul>
+          <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
+        </ul>
+      </div>
     </div>
   </div>
-</section>
-<section class="container">
-  <div class="row">
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div> <!-- ng-repeat through an array of search results -->
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
-    <div class="result three columns" ng-click="main.viewRestaurant();"></div>
+  <div class="wrapper" id="gallery">
+    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
+      <p ng-click="zomato.showRestaurantDetail($index);">
+        {{restaurant.restaurant.name}}
+      </p>
+      <p>
+        <i class="fa fa-cutlery" aria-hidden="true"></i> {{restaurant.restaurant.cuisines}}
+      </p>
+      <!-- Conditional ng-if statements: repeat the dollar icon based on .price_range value -->
+      <p ng-if="restaurant.restaurant.price_range === 1">
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 2">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 3">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 4">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p>
+        <i class="fa fa-star" aria-hidden="true"></i> {{restaurant.restaurant.user_rating.aggregate_rating}} / {{restaurant.restaurant.user_rating.votes}} votes
+      </p>
+    </div> <!-- ng-repeat through an array of search results -->
   </div>
-</section>
-<section id="modal" ng-if="main.isViewRestaurantActive"> <!--  SHOW MODAL to Inspect One Restaurant's Details  -->
-  <div id="modal-box">
-    <img src="/img/fork.png" alt="Fork and Spoon">
-    <h2>Here's A Restaurant</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <button class="button">Add To Favorites</button>
-    <button class="button">Close</button>
-  </div>
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
 </section>

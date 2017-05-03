@@ -4,57 +4,74 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 2;
 }
 body {
   /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Droid Serif', serif;
   color: #000000;
+  min-width: 315px;
 }
 main {
   background-color: #FFFFFF;
 }
-input {
+input[type=submit], input[type=text], input[type=password] {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 5px;
+}
+input[type=submit], button {
+  background-color: #EEEEEE;
+  padding: 5px 15px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border: 2px solid #CCCCCC;
 }
 
 /* =============== HEADER =============== */
 header {
   background-color: #3db1c3;
   color: #FFFFFF;
-  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 5px;
   text-align: center;
 }
 header > h1 {
   font-weight: bolder;
+  font-size: 28px;
   letter-spacing: 7px;
   margin-top: 1em;
 }
 header > p {
-  font-size: 26px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 5px;
+  width: 285px;
+  margin: 0 auto;
+
 }
 #fish {
   background-color: #FFFFFF;
   border-radius: 50%;
   margin: 0 auto;
-  width: 200px;
-  height: 200px;
+  width: 130px;
+  height: 130px;
 }
 #fish > img {
-  width: 197px;
-  margin-top: 32px;
+  width: 126px;
+  margin-top: 22px;
   margin-left: .5px;
 }
 
 /* =============== NAV =============== */
 nav {
   background-color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 nav > ul {
   margin: 0;
-  line-height: 5;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -64,38 +81,60 @@ nav > ul {
 .navlink {
   background-color: #ff5e4c;
   text-transform: uppercase;
-  border-radius: 30px;
-  padding: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: #FFFFFF;
   letter-spacing: 5px;
-  font-size: 24px;
   cursor: pointer;
+  border-radius: 30px;
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  margin: 5px 15px 5px 15px;
+  color: #FFFFFF;
 }
 .navlink:hover {
-  background-color: #cccccc;
+  background-color: #EEEEEE;
   color: #000000;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  border: 5px solid #000000;
+  box-shadow: 0px 0px 6px 6px #444A9E;
 }
 
 /* =============== SEARCH =============== */
 .wrapper {
-  border: 5px solid black;
+  box-shadow: 0px 0px 6px 6px #444A9E;
   border-radius: 5px;
   width: 95%;
+  max-width: 855px;
   margin: 0 auto;
+  margin-bottom: 40px;
   padding: 2%;
 }
-#search {
+#search-container {
+  width: 286px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+h3 {
+  font-size: 28px;
+}
+#search-input {
   width: 100%;
 }
+#fork {
+  height: 130px;
+  margin-right: 15px;
+}
 #location-results {
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
   border-radius: 5px;
+  margin-top: 25px;
 }
 #location-results > ul {
   margin: 0;
@@ -105,10 +144,35 @@ nav > ul {
 }
 
 /* =============== SEARCH RESULTS =============== */
+#gallery {
+  box-shadow: 0px 0px 6px 6px #3db1c3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 .result {
-  width: 100px;
-  height: 100px;
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 20px;
+  cursor: pointer;
+  width: 90vw;
+  min-width: 280px;
+  max-width: 522px;
+  max-height: 200px;
+}
+.result:hover {
+  background-color: #fcedea;
+}
+.result:hover p:first-of-type {
+  color: #ff5e4c;
+}
+.result > p {
+  line-height: 1.5;
+}
+.result > p:first-of-type {
+  font-size: 24px;
 }
 
 /* =============== VIEW RESTAURANT =============== */
@@ -134,47 +198,106 @@ nav > ul {
   height: 200px;
 }
 /* =============== LOG IN =============== */
-
+.login-reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-reg-header {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
 
 /* =============== FOOTER =============== */
 footer {
-  position: fixed;
   width: 100vw;
-  bottom: 0;
   text-align: center;
   background-color: #fcedea;
+  margin-top: 80px;
   padding: 10px;
 }
 footer > p {
   margin: 0;
-  font-size: 20px;
+  font-size: 14px;
+  min-width: 315px;
+
 }
 .footerlink {
   text-decoration: none;
   color: red;
 }
 
+/* =============== MOBILE (> 600) =============== */
+@media (min-width: 600px){
+  header > p {
+    width: 100%;
+    font-size: 18px;
+  }
+  #search-container {
+    width: 100%;
+  }
+  .login-reg-header {
+    width: 80%;
+  }
+}
+
+/* =============== TABLET (> 900) =============== */
+@media (min-width: 900px){
+  .navlink {
+    width: auto;
+    font-size: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  #fork {
+    height: 100px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  input {
+    font-size: 14px;
+  }
+  footer > p {
+    font-size: 12px;
+  }
+  #gallery {
+    box-shadow: 0px 0px 6px 6px #3db1c3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  input[type=submit], input[type=text], input[type=password] {
+    font-size: 12px;
+  }
+  input[type=submit], button {
+    padding: 2px 12px;
+  }
+  .login-reg-header {
+    width: 60%;
+  }
+  .login-reg-header > h3 {
+    font-size: 20px;
+  }
+  .login-reg-header > p {
+    font-size: 12px;
+  }
+}
+
+/* =============== DESKTOP (> 1200) =============== */
+
+
 /* =============== COLOR DICTIONARY =============== */
 
 /*Fish: #ff6c57
-Nav Buttons: #ff5e4c
-Header: #3db1c3*/
-
-
-/* #F09784 Piranha Coral <<<<<<<<<< PIRANHA ICON >>>>>>>>> */
-/* #FAD8D1 Light Coral */
-/* #fcedea Lightest Coral */
-/* https://www.pantone.com/color-of-the-year-2017 */
-/* #444A9E Pantone "Dazzling Blue" */
-/* #F77924 Pantone "Orange Popsicle" */
-/* #59C9D5 Pantone "Blue Radiance" */
-/* Dark teal: #129baf */
-/* #784067 Pantone "Grape Kiss" */
-/* #00939A Pantone "Viridian Green" */
-/* #83B14F Pantone "Greenery" */
-/* #817397 Pantone "Purpel Haze" */
-/* #486972 Pantone "Hydro" */
-/* #EF5229 Pantone "Scarlet Ibis" <<< deep orange >>> */
-/* #FDE9E4 PALE PALE CORAL, lightest */
-/* Cartoon Piranha: GRAPE #344D87 */
-/* Cartoon Piranha: PEACH #FFCCAA */
+Dark Orange: #ff5e4c
+Turquoise: #3db1c3
+Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year-2017
+Light Grey: #EEEEEE
+Med Grey: #CCCCCC
+Lightest Coral: #fcedea*/

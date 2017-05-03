@@ -1,6 +1,6 @@
 var app = angular.module('BiteFinder', []);
 
-app.controller('MainController', ['$http', function($http){
+app.controller('MainController', ['$http', '$scope', function($http, $scope){
   // freezing this
   var controller = this;
 
@@ -11,6 +11,7 @@ app.controller('MainController', ['$http', function($http){
   this.newUserData = {};
   this.currentUserData = {}; // ng-model data from login form (just UN & PW)
   this.sessionUser = {}; // full user object of the user logged in
+  this.sessionActive = false; // boolean variable for toggling session views
   this.userLoginFailed = false;
   this.editingUser = false;
   this.editUserData = {};
@@ -38,30 +39,21 @@ app.controller('MainController', ['$http', function($http){
   // ajax request to create a new user
   this.createUser = function(){
     // http request to create the user
+    var tempPassword = controller.newUserData.password
     $http({
       method:'POST',
       url: '/users',
       data: controller.newUserData
     }).then(function(response){
       controller.newUserData = {}; // empties the array after the user is created
+      controller.currentUserData.username = response.data.username;
+      controller.currentUserData.password = tempPassword;
+      controller.tab = 2;
+      controller.loginCheck();
     }, function(error){
         console.log(error);
     });
-
   };
-
-  // object to check current session user
-  // this.sessionUser = {
-  //   username: req.session.currentUser.username,
-  //   password: req.session.currentUser.password,
-  //   name: req.session.currentUser.name,
-  //   city: req.session.currentUser.city,
-  //   favorites: req.session.currentUser.favorites
-  // }
-
-  this.testingSession = function(){
-    console.log(req.session.currentUser);
-  }
 
   // Check Login username/password info
   this.loginCheck = function(){
@@ -79,6 +71,7 @@ app.controller('MainController', ['$http', function($http){
       } else {
         controller.sessionUser = response.data;
         controller.userLoginFailed = false;
+        controller.sessionActive = true;
         console.log(controller.sessionUser);
         // send to landing page
       }
@@ -94,6 +87,7 @@ app.controller('MainController', ['$http', function($http){
     }).then(function(response){
       controller.sessionUser = {};
       controller.currentUserData = {};
+      controller.sessionActive = false;
       console.log(controller.sessionUser);
       // send to landing page
     }, function(){
@@ -164,5 +158,81 @@ app.controller('MainController', ['$http', function($http){
       console.log('failed to delete user');
     });
   }
+}]);
+
+app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
+  // freezing this
+  var controller = this;
+
+  // variables
+  this.locationSuggestions = [];
+  this.foundRestaurants = [];
+  this.isViewRestaurantActive = false;
+
+  // searches for restauruants within a location via long/lat
+  this.longLat = function(){
+    $http({
+      method: 'GET',
+      url: '/zomato/' + $scope.$parent.main.sessionUser.latitude + '/' + $scope.$parent.main.sessionUser.longitude
+    }).then(function(response){
+        console.log(response);
+    }, function(){
+        console.log('error');
+    })
+  };
+
+  // searches for a list of cities via a string query
+  this.searchCities = function(){
+    $http({
+      method: 'GET',
+      url: '/zomato/' + controller.cityInput
+    }).then(function(response){
+        controller.locationSuggestions = response.data.location_suggestions;
+        console.log(response.data);
+    }, function(){
+        console.log('error');
+    })
+  };
+
+  // searches for a list of restaurants within a city by city ID
+  this.findRestaurants = function(id){
+    $http({
+      method: "GET",
+      url: "/zomato/restaurants/" + id
+    }).then(function(response){
+      controller.foundRestaurants = response.data.restaurants;
+      console.log(controller.foundRestaurants);
+    }, function(error){
+      console.log(error);
+    })
+  };
+
+  // saves a restaurant to a user's favorites
+  this.saveRestaurant = function(){
+    if($scope.$parent.main.sessionActive){
+      $http({
+        method:'PUT',
+        url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
+        data: controller.restaurantDetail
+      }).then(function(response){
+        console.log(response);
+      }, function(error){
+          console.log(error);
+      })
+    } else {
+        console.log('not logged in');
+    }
+  };
+
+  // shows restaurant detail modal
+  this.showRestaurantDetail = function(ind){
+    this.isViewRestaurantActive = true;
+    this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
+  };
+
+  // hides the restaurant detail modal
+  this.closeRestaurantDetail = function(){
+    this.isViewRestaurantActive = false;
+  };
 
 }]);
