@@ -303,7 +303,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         method:'DELETE',
         url:'/locations/delete/' + location._id + '/' + location.cityId,
       }).then(function(response){
-          console.log(location);
+          $scope.$parent.main.sessionUser.savedLoc = response.data.savedLoc
       }, function(error){
           console.log(error);
       })
