@@ -228,6 +228,9 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.showRestaurantDetail = function(ind){
     this.isViewRestaurantActive = true;
     this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
+    if (this.restaurantDetail.featured_image === ''){
+      this.restaurantDetail.featured_image = "/img/yum.png";
+    }
   };
 
   // hides the restaurant detail modal

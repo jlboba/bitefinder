@@ -19,8 +19,8 @@
     </div>
   </div>
   <div class="wrapper" id="gallery">
-    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
-      <p ng-click="zomato.showRestaurantDetail($index);">
+    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);">
+      <p>
         {{restaurant.restaurant.name}}
       </p>
       <p>
