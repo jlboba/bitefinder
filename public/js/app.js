@@ -167,9 +167,13 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // variables
   this.locationSuggestions = [];
   this.foundRestaurants = [];
+  this.isViewLocationResultsActive = false;
+  this.isViewGalleryActive = false;
   this.isViewRestaurantActive = false;
   this.viewRestaurantInd = null;
   this.userReview = {};
+  this.cuisineSearch = "all";
+  this.activeLocationId = '';
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -190,6 +194,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       url: '/zomato/' + controller.cityInput
     }).then(function(response){
         controller.locationSuggestions = response.data.location_suggestions;
+        controller.isViewLocationResultsActive = true;
         console.log(response.data);
     }, function(){
         console.log('error');
@@ -203,15 +208,39 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       url: "/zomato/restaurants/" + id
     }).then(function(response){
       controller.foundRestaurants = response.data.restaurants;
+      controller.isViewGalleryActive = true;
+      controller.activeLocationId = id;
       console.log(controller.foundRestaurants);
+      console.log(controller.activeLocationId);
     }, function(error){
       console.log(error);
     })
   };
 
+  // searches for a list of restaurants in a pre-defined area by their cuisine type
+  this.findRestaurantsByCuisine = function(){
+    if (this.cuisineSearch === 'all') {
+      this.findRestaurants(controller.activeLocationId);
+    } else {
+      $http({
+        method: "GET",
+        url: "/zomato/restaurants/" + controller.activeLocationId + "/cuisine/" + controller.cuisineSearch
+      }).then(function(response){
+        controller.foundRestaurants = response.data.restaurants;
+        console.log(response);
+        console.log(controller.foundRestaurants);
+      }, function(error){
+        console.log(error);
+      });
+    }
+  }
+
   // saves a restaurant to a user's favorites
   this.saveRestaurant = function(){
     if($scope.$parent.main.sessionActive){
+      // add to session list to display in real time
+      $scope.$parent.main.sessionUser.favorites.push(controller.restaurantDetail);
+      // make http request to add to database favorites
       $http({
         method:'PUT',
         url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
