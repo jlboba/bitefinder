@@ -13,6 +13,7 @@ router.post('/', function(req,res){
 });
 
 // =============== PUT ROUTES ========================
+// adds a restaurant to a user's favorites
 router.put('/favorites/:id', function(req, res){
   console.log(req.body);
   User.findById(req.params.id, function(err, foundUser){
