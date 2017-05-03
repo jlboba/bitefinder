@@ -15,9 +15,18 @@ body {
 main {
   background-color: #FFFFFF;
 }
-input {
+input[type=submit], input[type=text], input[type=password] {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 5px;
+}
+input[type=submit], button {
+  background-color: #EEEEEE;
+  padding: 5px 15px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border: 2px solid #CCCCCC;
 }
 
 /* =============== HEADER =============== */
@@ -35,7 +44,7 @@ header > h1 {
   margin-top: 1em;
 }
 header > p {
-  font-size: 20px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 5px;
   width: 285px;
@@ -86,7 +95,7 @@ nav > ul {
   color: #FFFFFF;
 }
 .navlink:hover {
-  background-color: #cccccc;
+  background-color: #EEEEEE;
   color: #000000;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
@@ -101,6 +110,7 @@ nav > ul {
   width: 95%;
   max-width: 855px;
   margin: 0 auto;
+  margin-bottom: 40px;
   padding: 2%;
 }
 #search-container {
@@ -122,7 +132,7 @@ h3 {
   margin-right: 15px;
 }
 #location-results {
-  background-color: #CCCCCC;
+  background-color: #EEEEEE;
   border-radius: 5px;
   margin-top: 25px;
 }
@@ -134,12 +144,36 @@ h3 {
 }
 
 /* =============== SEARCH RESULTS =============== */
-
-/*.result {
-  width: 100px;
-  height: 100px;
-  background-color: rgba(68, 74, 158, 0.4); RGBA with opacity for #444A9E
-}*/
+#gallery {
+  box-shadow: 0px 0px 6px 6px #3db1c3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.result {
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 20px;
+  cursor: pointer;
+  width: 90vw;
+  min-width: 280px;
+  max-width: 522px;
+  max-height: 200px;
+}
+.result:hover {
+  background-color: #fcedea;
+}
+.result:hover p:first-of-type {
+  color: #ff5e4c;
+}
+.result > p {
+  line-height: 1.5;
+}
+.result > p:first-of-type {
+  font-size: 24px;
+}
 
 /* =============== VIEW RESTAURANT =============== */
 #modal {
@@ -164,7 +198,17 @@ h3 {
   height: 200px;
 }
 /* =============== LOG IN =============== */
-
+.login-reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-reg-header {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
 
 /* =============== FOOTER =============== */
 footer {
@@ -194,6 +238,9 @@ footer > p {
   #search-container {
     width: 100%;
   }
+  .login-reg-header {
+    width: 80%;
+  }
 }
 
 /* =============== TABLET (> 900) =============== */
@@ -218,6 +265,28 @@ footer > p {
   footer > p {
     font-size: 12px;
   }
+  #gallery {
+    box-shadow: 0px 0px 6px 6px #3db1c3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  input[type=submit], input[type=text], input[type=password] {
+    font-size: 12px;
+  }
+  input[type=submit], button {
+    padding: 2px 12px;
+  }
+  .login-reg-header {
+    width: 60%;
+  }
+  .login-reg-header > h3 {
+    font-size: 20px;
+  }
+  .login-reg-header > p {
+    font-size: 12px;
+  }
 }
 
 /* =============== DESKTOP (> 1200) =============== */
@@ -226,24 +295,9 @@ footer > p {
 /* =============== COLOR DICTIONARY =============== */
 
 /*Fish: #ff6c57
-Nav Buttons: #ff5e4c
-Header: #3db1c3*/
-
-
-/* #F09784 Piranha Coral <<<<<<<<<< PIRANHA ICON >>>>>>>>> */
-/* #FAD8D1 Light Coral */
-/* #fcedea Lightest Coral */
-/* https://www.pantone.com/color-of-the-year-2017 */
-/* #444A9E Pantone "Dazzling Blue" */
-/* #F77924 Pantone "Orange Popsicle" */
-/* #59C9D5 Pantone "Blue Radiance" */
-/* Dark teal: #129baf */
-/* #784067 Pantone "Grape Kiss" */
-/* #00939A Pantone "Viridian Green" */
-/* #83B14F Pantone "Greenery" */
-/* #817397 Pantone "Purpel Haze" */
-/* #486972 Pantone "Hydro" */
-/* #EF5229 Pantone "Scarlet Ibis" <<< deep orange >>> */
-/* #FDE9E4 PALE PALE CORAL, lightest */
-/* Cartoon Piranha: GRAPE #344D87 */
-/* Cartoon Piranha: PEACH #FFCCAA */
+Dark Orange: #ff5e4c
+Turquoise: #3db1c3
+Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year-2017
+Light Grey: #EEEEEE
+Med Grey: #CCCCCC
+Lightest Coral: #fcedea*/

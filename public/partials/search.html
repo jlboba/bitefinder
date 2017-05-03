@@ -1,5 +1,5 @@
 <section ng-controller="ZomatoController as zomato">
-  <section class="wrapper">
+  <div class="wrapper">
     <div id="search-container">
       <img src="img/fork.png" alt="Fork and spoon" id="fork">
       <div id="search-form">
@@ -17,11 +17,38 @@
         </ul>
       </div>
     </div>
-  </section>
-  <section class="wrapper">
+  </div>
+  <div class="wrapper" id="gallery">
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
-      <h2 ng-click="zomato.showRestaurantDetail($index);">{{restaurant.restaurant.name}}</h2>
+      <p ng-click="zomato.showRestaurantDetail(restaurant.restaurant.id);">
+        {{restaurant.restaurant.name}}
+      </p>
+      <p>
+        <i class="fa fa-cutlery" aria-hidden="true"></i> {{restaurant.restaurant.cuisines}}
+      </p>
+      <!-- Conditional ng-if statements: repeat the dollar icon based on .price_range value -->
+      <p ng-if="restaurant.restaurant.price_range === 1">
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 2">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 3">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p ng-if="restaurant.restaurant.price_range === 4">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </p>
+      <p>
+        <i class="fa fa-star" aria-hidden="true"></i> {{restaurant.restaurant.user_rating.aggregate_rating}} / {{restaurant.restaurant.user_rating.votes}} votes
+      </p>
     </div> <!-- ng-repeat through an array of search results -->
-  </section>
-  <section id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></section>
+  </div>
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
 </section>
