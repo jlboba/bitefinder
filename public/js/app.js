@@ -211,6 +211,9 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // saves a restaurant to a user's favorites
   this.saveRestaurant = function(){
     if($scope.$parent.main.sessionActive){
+      // add to session list to display in real time
+      $scope.$parent.main.sessionUser.favorites.push(controller.restaurantDetail);
+      // make http request to add to database favorites
       $http({
         method:'PUT',
         url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
