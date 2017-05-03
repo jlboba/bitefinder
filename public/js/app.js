@@ -175,6 +175,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.isViewGalleryActive = false;
   this.isViewRestaurantActive = false;
   this.viewRestaurantInd = null;
+  this.userReview = {};
   this.cuisineSearch = "all";
   this.activeLocationId = '';
 
@@ -261,6 +262,16 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // remove a restaurant from a user's favorites
   this.deleteRestaurant = function(){
     if ($scope.$parent.main.sessionActive){
+      // remove reviews associated with this restaurant
+      $http({
+        method: 'DELETE',
+        url: '/review/' + $scope.$parent.main.sessionUser._id + '/' + controller.restaurantDetail.id
+      }).then(function(response){
+        //console.log(response);
+      }, function(){
+          console.log('Failed in removing favorite restaurant');
+      });
+
       // remove from session list
       $scope.$parent.main.sessionUser.favorites.splice(controller.viewRestaurantInd,1);
       $http({
@@ -272,6 +283,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       }, function(){
           console.log('Failed in removing favorite restaurant');
       });
+
     } else {
       console.log('not logged in');
     }
@@ -299,7 +311,71 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
     console.log(ind);
     //console.log(this.restaurantDetail);
+    // console.log('user id ', $scope.$parent.main.sessionUser._id);
+    // console.log('restaurant id ', this.restaurantDetail.id);
+    $http({
+      method: "GET",
+      url: "/review/"+ $scope.$parent.main.sessionUser._id +"/" + this.restaurantDetail.id
+    }).then(function(response){
+      console.log('Review ', response.data);
+      controller.userReview = response.data;
+      //console.log(controller.foundReview);
+    }, function(error){
+      console.log(error);
+    })
   };
+  // save or update user review
+  this.saveReview = function(id){
+    if (id === undefined || id === null){
+      // create the user review
+      //console.log(controller.userReview.comments);
+      $http({
+        method: 'POST',
+        url: '/review',
+        data: {
+          userId: $scope.$parent.main.sessionUser._id,
+          restaurantId: controller.restaurantDetail.id,
+          comments: controller.userReview.comments
+        }
+      }).then(function(response){
+        console.log('New Review ' ,response.data);
+        controller.userReview._id = response.data._id;
+      }, function(err){
+        console.log('Failed in creating new user review');
+      });
+
+    } else {
+      console.log('Update Review ' + id);
+      // textarea is null
+      if ( this.userReview.comments === '') {
+        //console.log('Update review null ');
+        // delete from db
+        $http({
+          method: 'DELETE',
+          url: '/review/id/' + id
+        }).then(function(response){
+          console.log('Delete Review ' ,response.data);
+          controller.userReview._id = null;
+        }, function(err){
+          console.log('Failed in deleting a user review');
+        });
+      } else {
+        // update db
+        $http({
+          method: 'PUT',
+          url: '/review/' + id,
+          data: {
+            comments: controller.userReview.comments
+          }
+        }).then(function(response){
+          console.log('Updated Review ' ,response.data);
+        }, function(err){
+          console.log('Failed in updating a user review');
+        });
+      }
+    }
+  };
+
 
   // saves a location (name and id) into local database by creating an object
   this.saveLocation = function(location){
