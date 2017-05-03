@@ -235,4 +235,12 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isViewRestaurantActive = false;
   };
 
+  // shows restaurant detail modal of favorite restaurants
+  this.showFavoriteRestaurantDetail = function(ind){
+    this.isViewRestaurantActive = true;
+    this.isFavoriteRestaurant = true;
+    this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
+    console.log(ind);
+  }
+
 }]);
