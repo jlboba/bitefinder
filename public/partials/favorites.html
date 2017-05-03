@@ -1,6 +1,6 @@
-<section class="wrapper">
+<section class="wrapper" ng-controller="ZomatoController as zomato">
   <div class="result" ng-repeat="favorite in main.sessionUser.favorites">
-    <p ng-click="zomato.showRestaurantDetail($index);">
+    <p ng-click="zomato.showFavoriteRestaurantDetail($index);">
       {{favorite.name}}
     </p>
     <p>
@@ -29,4 +29,5 @@
       <i class="fa fa-star" aria-hidden="true"></i> {{favorite.user_rating.aggregate_rating}} / {{favorite.user_rating.votes}} votes
     </p>
   </div> <!-- ng-repeat through an array of search results -->
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
 </section>
