@@ -1,4 +1,5 @@
 <section ng-controller="ZomatoController as zomato">
+  <!-- SEARCH FOR CITY NAME -->
   <div class="wrapper">
     <div id="search-container">
       <img src="img/fork.png" alt="Fork and spoon" id="fork">
@@ -13,11 +14,32 @@
     <div>
       <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
         <ul>
-          <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
+          <li ng-repeat="location in zomato.locationSuggestions">
+            <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
+            <a ng-click="zomato.saveLocation(location);" ng-if="main.sessionActive"><i class="fa fa-map-pin" aria-hidden="true"></i></a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
+  <!-- SAVED LOCATIONS TOGGLES ONLY IF A USER IS LOGGED IN-->
+  <div class="wrapper" ng-if="main.sessionActive">
+    <div id="search-container">
+      <img src="img/fork.png" alt="Fork and spoon" id="fork">
+      <h3>Saved Locations</h3>
+    </div>
+    <div>
+      <div id="location-results">
+        <ul>
+          <li ng-repeat="location in main.sessionUser.savedLoc">
+            <a ng-click="zomato.findRestaurants(location.cityId);">{{location.name}}</a>
+            <a ng-click="zomato.deleteLocation(location);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- DISPLAYS RESTAURANTS FOUND IN A LOCATION -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
     <div id="filter">
       <h3>Narrow Down By Type</h3>
