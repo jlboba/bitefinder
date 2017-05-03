@@ -28,6 +28,9 @@ input[type=submit], button {
   text-transform: uppercase;
   border: 2px solid #CCCCCC;
 }
+button {
+  border-radius: 5px;
+}
 
 /* =============== HEADER =============== */
 header {
@@ -142,6 +145,12 @@ h3 {
   text-align: center;
   padding: 10px;
 }
+#location-results * li {
+  cursor: pointer;
+}
+#location-results * li:hover {
+  color: #ff5e4c;
+}
 
 /* =============== SEARCH RESULTS =============== */
 #gallery {
@@ -172,7 +181,7 @@ h3 {
   line-height: 1.5;
 }
 .result > p:first-of-type {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 /* =============== VIEW RESTAURANT =============== */
@@ -188,15 +197,49 @@ h3 {
 }
 #modal-box {
   background-color: #FFFFFF;
-  margin: 100px auto;
-  padding: 5vw;
-  height: 80vw;
-  width: 80vw;
+  overflow: auto;
+  margin: 16px;
+  padding: 20px;
+  height: 90%;
+  max-height: 850px;
+  width: 90%;
+  max-width: 800px;
+  min-width: 300px;
   border-radius: 5px;
 }
-#modal-box > img {
-  height: 200px;
+#modal-header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+#modal-header > img {
+  height: 100px;
+}
+#modal-box > img {
+  margin: 10px auto;
+  display: block;
+  width: 300px;
+}
+hr {
+  border: 3px solid #ff5e4c;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#zomato-link {
+  display: block;
+  margin-top: 60px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ff5e4c;
+}
+#fave-link {
+  background-color: #FFFFFF;
+  border: 3px solid #ff5e4c;
+  border-radius: 5px;
+}
+
 /* =============== LOG IN =============== */
 .login-reg {
   display: flex;
@@ -240,6 +283,18 @@ footer > p {
   }
   .login-reg-header {
     width: 80%;
+  }
+  #modal-box {
+    margin: 5%;
+  }
+  #modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  #modal-body > div {
+    margin-left: 5%;
   }
 }
 
@@ -286,6 +341,10 @@ footer > p {
   }
   .login-reg-header > p {
     font-size: 12px;
+  }
+  #modal-box {
+    margin: auto;
+    margin-top: 45px;
   }
 }
 

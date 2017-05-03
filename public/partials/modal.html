@@ -1,27 +1,34 @@
 <!--  SHOW MODAL to Inspect One Restaurant's Details  -->
   <div id="modal-box">
-    <img src="/img/fork.png" alt="Fork and Spoon">
-
+    <div id="modal-header">
+      <img src="/img/fork.png" alt="Fork and Spoon">
+      <h2>{{zomato.restaurantDetail.name}}</h2>
+    </div>
+    <hr>
     <!-- DETAILS FOR SPECIFIC RESTAURANT -->
-    <h2>{{zomato.restaurantDetail.name}}</h2>
-    <p>{{zomato.restaurantDetail.location.address}} <br/>
-      <img src="{{zomato.restaurantDetail.featured_image}}" alt=""> <br/>
-        Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
-        Cost: Average ${{zomato.restaurantDetail.
-average_cost_for_two}} for two people<br/>
-        Price Range: {{zomato.restaurantDetail.price_range}} <br/>
-        User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
-        {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
-
-        <a href="{{zomato.restaurantDetail.url}}" target="_blank">ZOMATO</a>
-
-    </p>
-    <!-- BUTTONS -->
-    <form ng-submit="zomato.saveRestaurant()" ng-if="!zomato.isFavoriteRestaurant">
-      <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites"/>
-    </form>
-    <form ng-submit="zomato.deleteRestaurant()" ng-if="zomato.isFavoriteRestaurant">
-      <input type="submit" ng-if="main.sessionUser.username" value="Remove from Favorites"/>
-    </form>
-    <button class="button" ng-click="zomato.closeRestaurantDetail()">Close</button>
+      <img src="{{zomato.restaurantDetail.featured_image}}"> <br/>
+      <div id="modal-body">
+        <p>{{zomato.restaurantDetail.location.address}} <br/>
+          Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
+          Cost: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
+          Price Range: {{zomato.restaurantDetail.price_range}} <br/>
+          User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
+          {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
+        </p>
+            <!-- BUTTONS -->
+        <div>
+          <a href="{{zomato.restaurantDetail.url}}" target="_blank" id="zomato-link">Zomato</a>
+          
+          <!-- ADD TO FAVORITES -->
+          <form ng-submit="zomato.saveRestaurant()" ng-if="!zomato.isFavoriteRestaurant">
+            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
+          </form>
+          
+          <!-- REMOVE FROM FAVORITES -->
+          <form ng-submit="zomato.deleteRestaurant()" ng-if="zomato.isFavoriteRestaurant">
+            <input type="submit" ng-if="main.sessionUser.username" value="Remove from Favorites"/>
+          </form>
+          <button class="button" ng-click="zomato.closeRestaurantDetail()" id="close-modal">Close</button>
+        </div>
+      </div>
   </div>
