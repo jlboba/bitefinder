@@ -21,16 +21,20 @@
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
     <div id="filter">
       <h3>Narrow Down By Type</h3>
-      <ul>
-        <li ng-click="zomato.cuisineSearch = 'all'">All</li>
-        <li ng-click="zomato.cuisineSearch = 'american'">American</li>
-        <li ng-click="zomato.cuisineSearch = 'breakfast'">Breakfast</li>
-        <li ng-click="zomato.cuisineSearch = 'vegetarian'">Vegetarian</li>
-        <li ng-click="zomato.cuisineSearch = 'mexican'">Mexican</li>
-        <li ng-click="zomato.cuisineSearch = 'pizza'">Pizza</li>
-        <li ng-click="zomato.cuisineSearch = 'sushi'">Sushi</li>
-        <li ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</li>
-      </ul>
+      <p id="cuisine-list">
+        <span ng-click="zomato.cuisineSearch = 'all'">All</span>
+        <span ng-click="zomato.cuisineSearch = 'american'">American</span>
+        <span ng-click="zomato.cuisineSearch = 'breakfast'">Breakfast</span>
+        <span ng-click="zomato.cuisineSearch = 'vegetarian'">Vegetarian</span>
+        <span ng-click="zomato.cuisineSearch = 'mexican'">Mexican</span>
+        <span ng-click="zomato.cuisineSearch = 'pizza'">Pizza</span>
+        <span ng-click="zomato.cuisineSearch = 'sushi'">Sushi</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</span>
+      </p>
       <button ng-click="zomato.findRestaurantsByCuisine()">Filter</button>
     </div>
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);">
