@@ -287,6 +287,15 @@ footer > p {
   #modal-box {
     margin: 5%;
   }
+  #modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  #modal-body > div {
+    margin-left: 5%;
+  }
 }
 
 /* =============== TABLET (> 900) =============== */

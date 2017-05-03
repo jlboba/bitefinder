@@ -7,19 +7,22 @@
     <hr>
     <!-- DETAILS FOR SPECIFIC RESTAURANT -->
       <img src="{{zomato.restaurantDetail.featured_image}}"> <br/>
+      <div id="modal-body">
         <p>{{zomato.restaurantDetail.location.address}} <br/>
-        Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
-        Cost: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
-        Price Range: {{zomato.restaurantDetail.price_range}} <br/>
-        User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
-        {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
-    </p>
-    <!-- BUTTONS -->
-    <div>
-      <a href="{{zomato.restaurantDetail.url}}" target="_blank" id="zomato-link">Zomato</a>
-      <form ng-submit="zomato.saveRestaurant()">
-        <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
-      </form>
-      <button class="button" ng-click="zomato.closeRestaurantDetail()" id="close-modal">Close</button>
-    </div>
+          Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
+          Cost: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
+          Price Range: {{zomato.restaurantDetail.price_range}} <br/>
+          User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
+          {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
+        </p>
+            <!-- BUTTONS -->
+        <div>
+          <a href="{{zomato.restaurantDetail.url}}" target="_blank" id="zomato-link">Zomato</a>
+          <form ng-submit="zomato.saveRestaurant()">
+            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
+          </form>
+          <button class="button" ng-click="zomato.closeRestaurantDetail()" id="close-modal">Close</button>
+        </div>
+      </div>
+
   </div>
