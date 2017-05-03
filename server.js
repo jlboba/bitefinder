@@ -26,6 +26,8 @@ var zomatoController = require('./controllers/zomato.js');
 app.use('/zomato', zomatoController);
 var reviewController = require('./controllers/review.js');
 app.use('/review', reviewController);
+var locationController = require('./controllers/locations.js');
+app.use('/locations', locationController);
 
 // ================== DB CONNECTION =====================
 mongoose.connect(mongoDBURI);

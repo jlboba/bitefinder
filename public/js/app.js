@@ -1,5 +1,6 @@
 var app = angular.module('BiteFinder', []);
 
+// MAIN CONTROLLER
 app.controller('MainController', ['$http', '$scope', function($http, $scope){
   // freezing this
   var controller = this;
@@ -16,7 +17,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
   this.editingUser = false;
   this.editUserData = {};
   this.newPassword = '';
-
 
   // geolocator method to grab user's latitude and longitude
   this.geolocator = function(){
@@ -79,6 +79,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
       console.log('Failed in login check');
     });
   };
+
   // Logout
   this.logOut = function(){
     $http({
@@ -105,6 +106,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
       city: controller.sessionUser.city
     }
   };
+
   // Cancel Edit User
   this.cancelEditUser = function(){
     //console.log('Cancel Edit Session:', controller.sessionUser);
@@ -112,7 +114,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
     this.editingUser = false;
     this.editUserData = {};
   };
-  //
+
+  // Edits user
   this.updateUser = function(){
     //console.log('Update User ', controller.editUserData);
     if (controller.newPassword !== '') {
@@ -160,6 +163,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
   }
 }]);
 
+// ZOMATO API CONTROLLER
 app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // freezing this
   var controller = this;
@@ -254,6 +258,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         console.log('not logged in');
     }
   };
+
   // remove a restaurant from a user's favorites
   this.deleteRestaurant = function(){
     if ($scope.$parent.main.sessionActive){
@@ -304,8 +309,10 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isFavoriteRestaurant = true;
     this.viewRestaurantInd = ind;
     this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
-    console.log('user id ', $scope.$parent.main.sessionUser._id);
-    console.log('restaurant id ', this.restaurantDetail.id);
+    console.log(ind);
+    //console.log(this.restaurantDetail);
+    // console.log('user id ', $scope.$parent.main.sessionUser._id);
+    // console.log('restaurant id ', this.restaurantDetail.id);
     $http({
       method: "GET",
       url: "/review/"+ $scope.$parent.main.sessionUser._id +"/" + this.restaurantDetail.id
@@ -316,7 +323,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     }, function(error){
       console.log(error);
     })
-  }
+  };
   // save or update user review
   this.saveReview = function(id){
     if (id === undefined || id === null){
@@ -370,6 +377,40 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   };
 
 
+  // saves a location (name and id) into local database by creating an object
+  this.saveLocation = function(location){
+    if ($scope.$parent.main.sessionActive){ // checks if a user is logged in first
+      $http({
+        method: 'POST',
+        url: '/locations/save',
+        data: {
+          name: location.name,
+          cityId: location.id,
+          user: $scope.$parent.main.sessionUser._id
+        }
+      }).then(function(response){
+          $scope.$parent.main.sessionUser.savedLoc = response.data.savedLoc;
+      }, function(error){
+          console.log(error);
+      });
+    } else {
+        console.log('not logged in!');
+    }
+  };
 
-
+  // deletes a user's saved location
+  this.deleteLocation = function(location){
+    if($scope.$parent.main.sessionActive){
+      $http({
+        method:'DELETE',
+        url:'/locations/delete/' + location._id + '/' + location.cityId,
+      }).then(function(response){
+          $scope.$parent.main.sessionUser.savedLoc = response.data.savedLoc
+      }, function(error){
+          console.log(error);
+      })
+    } else {
+        console.log('not logged in!');
+    }
+  }
 }]);

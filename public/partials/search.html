@@ -1,4 +1,5 @@
 <section ng-controller="ZomatoController as zomato">
+  <!-- SEARCH FOR CITY NAME -->
   <div class="wrapper">
     <div id="search-container">
       <img src="img/fork.png" alt="Fork and spoon" id="fork">
@@ -13,25 +14,50 @@
     <div>
       <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
         <ul>
-          <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
+          <li ng-repeat="location in zomato.locationSuggestions">
+            <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
+            <a ng-click="zomato.saveLocation(location);" ng-if="main.sessionActive"><i class="fa fa-map-pin" aria-hidden="true"></i></a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
+  <!-- SAVED LOCATIONS TOGGLES ONLY IF A USER IS LOGGED IN-->
+  <div class="wrapper" ng-if="main.sessionActive">
+    <div id="search-container">
+      <img src="img/fork.png" alt="Fork and spoon" id="fork">
+      <h3>Saved Locations</h3>
+    </div>
+    <div>
+      <div id="location-results">
+        <ul>
+          <li ng-repeat="location in main.sessionUser.savedLoc">
+            <a ng-click="zomato.findRestaurants(location.cityId);">{{location.name}}</a>
+            <a ng-click="zomato.deleteLocation(location);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- DISPLAYS RESTAURANTS FOUND IN A LOCATION -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
-    <div id="filter">
-      <h3>Narrow Down By Type</h3>
-      <ul>
-        <li ng-click="zomato.cuisineSearch = 'all'">All</li>
-        <li ng-click="zomato.cuisineSearch = 'american'">American</li>
-        <li ng-click="zomato.cuisineSearch = 'breakfast'">Breakfast</li>
-        <li ng-click="zomato.cuisineSearch = 'vegetarian'">Vegetarian</li>
-        <li ng-click="zomato.cuisineSearch = 'mexican'">Mexican</li>
-        <li ng-click="zomato.cuisineSearch = 'pizza'">Pizza</li>
-        <li ng-click="zomato.cuisineSearch = 'sushi'">Sushi</li>
-        <li ng-click="zomato.cuisineSearch = 'coffee and tea'">Coffee & Tea</li>
-      </ul>
-      <button ng-click="zomato.findRestaurantsByCuisine()">Filter</button>
+    <div id="filter-container">
+      <h3>Select a Filter</h3>
+      <p id="cuisine-list">
+        <span ng-click="zomato.cuisineSearch = 'all'" ng-class="{query: zomato.cuisineSearch === 'all'}">All</span>
+        <span ng-click="zomato.cuisineSearch = 'american'" ng-class="{query: zomato.cuisineSearch === 'american'}">American</span>
+        <span ng-click="zomato.cuisineSearch = 'breakfast'" ng-class="{query: zomato.cuisineSearch === 'breakfast'}">Breakfast</span>
+        <span ng-click="zomato.cuisineSearch = 'vegetarian'" ng-class="{query: zomato.cuisineSearch === 'vegetarian'}">Vegetarian</span>
+        <span ng-click="zomato.cuisineSearch = 'mexican'" ng-class="{query: zomato.cuisineSearch === 'mexican'}">Mexican</span>
+        <span ng-click="zomato.cuisineSearch = 'pizza'" ng-class="{query: zomato.cuisineSearch === 'pizza'}">Pizza</span>
+        <span ng-click="zomato.cuisineSearch = 'sushi'" ng-class="{query: zomato.cuisineSearch === 'sushi'}">Sushi</span>
+        <span ng-click="zomato.cuisineSearch = 'coffee and tea'" ng-class="{query: zomato.cuisineSearch === 'coffee and tea'}">Coffee & Tea</span>
+        <span ng-click="zomato.cuisineSearch = 'sandwich'" ng-class="{query: zomato.cuisineSearch === 'sandwich'}">Sandwich</span>
+        <span ng-click="zomato.cuisineSearch = 'desserts'" ng-class="{query: zomato.cuisineSearch === 'desserts'}">Desserts</span>
+        <span ng-click="zomato.cuisineSearch = 'japanese'" ng-class="{query: zomato.cuisineSearch === 'japanese'}">Japanese</span>
+        <span ng-click="zomato.cuisineSearch = 'bar food'" ng-class="{query: zomato.cuisineSearch === 'bar food'}">Bar Food</span>
+      </p>
+      <p ng-click="zomato.findRestaurantsByCuisine()" id="filter-button">Filter My Results</p>
     </div>
     <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);">
       <p>
