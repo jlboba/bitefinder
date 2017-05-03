@@ -319,7 +319,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   }
   // save or update user review
   this.saveReview = function(id){
-    if (id === undefined){
+    if (id === undefined || id === null){
       // create the user review
       //console.log(controller.userReview.comments);
       $http({
@@ -348,6 +348,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
           url: '/review/id/' + id
         }).then(function(response){
           console.log('Delete Review ' ,response.data);
+          controller.userReview._id = null;
         }, function(err){
           console.log('Failed in deleting a user review');
         });
