@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var locationSchema = mongoose.Schema({
   name: String,
-  id: String,
+  cityId: {type: String, unique: true},
   user: String
 });
 

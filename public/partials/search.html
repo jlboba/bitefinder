@@ -31,7 +31,10 @@
     <div>
       <div id="location-results">
         <ul>
-          <li ng-repeat="location in main.sessionUser.savedLoc" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
+          <li ng-repeat="location in main.sessionUser.savedLoc">
+            <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
+            <a ng-click="zomato.deleteLocation(location);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+          </li>
         </ul>
       </div>
     </div>

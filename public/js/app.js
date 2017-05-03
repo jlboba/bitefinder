@@ -283,7 +283,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         url: '/locations/save',
         data: {
           name: location.name,
-          id: location.id,
+          cityId: location.id,
           user: $scope.$parent.main.sessionUser._id
         }
       }).then(function(response){
@@ -296,4 +296,19 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     }
   };
 
+  // deletes a user's saved location
+  this.deleteLocation = function(location){
+    if($scope.$parent.main.sessionActive){
+      $http({
+        method:'DELETE',
+        url:'/locations/delete/' + location._id + '/' + location.cityId,
+      }).then(function(response){
+          console.log(location);
+      }, function(error){
+          console.log(error);
+      })
+    } else {
+        console.log('not logged in!');
+    }
+  }
 }]);
