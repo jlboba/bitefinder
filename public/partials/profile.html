@@ -1,8 +1,8 @@
 
-<section class="wrapper container" ng-if="main.sessionUser.username">
+<section class="wrapper" ng-if="main.sessionUser.username">
 
-  <div class="thumbnail">
-    <div id="profile-info" ng-if="!main.editingUser">
+  <div id="profile-info">
+    <div ng-if="!main.editingUser">
       <h3>User Profile</p>
       <p>Username: {{main.sessionUser.username}}</p>
       <p>Display Name: {{main.sessionUser.name}}</p>
@@ -11,7 +11,7 @@
       <button type="button" ng-click="main.logOut();">Log Out</button>
     </div>
 
-    <div id="profile-info" ng-if="main.editingUser">
+    <div ng-if="main.editingUser">
       <h3>Edit User Profile</p>
       <p>Username: <input type="text" ng-model="main.editUserData.username" value="main.editUserData.username"></p>
       <p>Password: <input type="password" ng-model="main.newPassword" placeholder="Not Required"></p>
@@ -31,7 +31,7 @@
   </div>
 </section>
 
-<section class="wrapper container" ng-if="!main.sessionUser.username">
+<section class="wrapper" ng-if="!main.sessionUser.username">
     <!-- <h1>Looks like you're not logged in!</h1> -->
-    <h1>Please Login!</h1>
+    <h1>Please Login</h1>
 </section>
