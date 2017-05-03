@@ -168,6 +168,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.locationSuggestions = [];
   this.foundRestaurants = [];
   this.isViewRestaurantActive = false;
+  this.viewRestaurantInd = null;
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -223,6 +224,24 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         console.log('not logged in');
     }
   };
+  // remove a restaurant from a user's favorites
+  this.deleteRestaurant = function(){
+    if ($scope.$parent.main.sessionActive){
+      // remove from session list
+      $scope.$parent.main.sessionUser.favorites.splice(controller.viewRestaurantInd,1);
+      $http({
+        method: 'DELETE',
+        url: '/users/favorites/' + $scope.$parent.main.sessionUser._id + '/' + controller.restaurantDetail.id
+      }).then(function(response){
+        //console.log(response);
+        controller.isViewRestaurantActive = false;
+      }, function(){
+          console.log('Failed in removing favorite restaurant');
+      });
+    } else {
+      console.log('not logged in');
+    }
+  };
 
   // shows restaurant detail modal
   this.showRestaurantDetail = function(ind){
@@ -242,8 +261,10 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.showFavoriteRestaurantDetail = function(ind){
     this.isViewRestaurantActive = true;
     this.isFavoriteRestaurant = true;
+    this.viewRestaurantInd = ind;
     this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
     console.log(ind);
+    //console.log(this.restaurantDetail);
   }
 
 }]);
