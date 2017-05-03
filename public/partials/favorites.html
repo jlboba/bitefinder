@@ -1,3 +1,33 @@
-<section class="wrapper">
-  {{main.sessionUser.favorites.name}}
+<section class="wrapper" ng-controller="ZomatoController as zomato">
+  <div class="result" ng-repeat="favorite in main.sessionUser.favorites">
+    <p ng-click="zomato.showFavoriteRestaurantDetail($index);">
+      {{favorite.name}}
+    </p>
+    <p>
+      <i class="fa fa-cutlery" aria-hidden="true"></i> {{favorite.cuisines}} / <i class="fa fa-map-marker"></i> {{favorite.location.city}}
+    </p>
+    <!-- Conditional ng-if statements: repeat the dollar icon based on .price_range value -->
+    <p ng-if="favorite.price_range === 1">
+      <i class="fa fa-money" aria-hidden="true"></i>
+    </p>
+    <p ng-if="favorite.price_range === 2">
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+    </p>
+    <p ng-if="favorite.price_range === 3">
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+    </p>
+    <p ng-if="favorite.price_range === 4">
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <i class="fa fa-money" aria-hidden="true"></i>
+    </p>
+    <p>
+      <i class="fa fa-star" aria-hidden="true"></i> {{favorite.user_rating.aggregate_rating}} / {{favorite.user_rating.votes}} votes
+    </p>
+  </div> <!-- ng-repeat through an array of search results -->
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
 </section>
