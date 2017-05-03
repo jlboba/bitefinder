@@ -14,6 +14,13 @@ router.get('/restaurants/:cityID', function(req, res, next){
   }).pipe(res);
 });
 
+router.get('/restaurants/:cityID/cuisine/:type', function(req, res, next){
+  request({
+    uri: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + req.params.cityID + '&entity_type=city&q=' + req.params.type,
+    headers: {'user-key':process.env.ZOMATO_API_KEY}
+  }).pipe(res);
+});
+
 // searches for a list of cities via a string query
 router.get('/:cityInput', function(req, res, next){
   request({
