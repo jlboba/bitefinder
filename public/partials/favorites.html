@@ -1,5 +1,5 @@
 <section class="wrapper" ng-controller="ZomatoController as zomato">
-  <div class="result" ng-repeat="favorite in main.sessionUser.favorites">
+  <div class="favorite" ng-repeat="favorite in main.sessionUser.favorites">
     <p ng-click="zomato.showFavoriteRestaurantDetail($index);">
       {{favorite.name}}
     </p>
