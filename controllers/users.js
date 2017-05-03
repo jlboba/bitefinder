@@ -13,7 +13,15 @@ router.post('/', function(req,res){
 });
 
 // =============== PUT ROUTES ========================
-
+router.put('/favorites/:id', function(req, res){
+  console.log(req.body);
+  User.findById(req.params.id, function(err, foundUser){
+    foundUser.favorites.push(req.body);
+    foundUser.save(function(err, savedUser){
+      res.json(savedUser);
+    });
+  });
+});
 
 router.put('/:id', function(req, res){
   if (req.body.password !== undefined) {

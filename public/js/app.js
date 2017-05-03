@@ -212,9 +212,10 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     if($scope.$parent.main.sessionActive){
       $http({
         method:'PUT',
-        url:'/users/favorites/' + $scope.$parent.main.sessionUser._id + '/' + controller.restaurantDetail.id
+        url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
+        data: controller.restaurantDetail
       }).then(function(response){
-        console.log(controller.restaurantDetail);
+        console.log(response);
       }, function(error){
           console.log(error);
       })
