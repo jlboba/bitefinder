@@ -181,43 +181,58 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     })
   };
 
-    // searches for a list of cities via a string query
-    this.searchCities = function(){
-      $http({
-        method: 'GET',
-        url: '/zomato/' + controller.cityInput
-      }).then(function(response){
-          controller.locationSuggestions = response.data.location_suggestions;
-          console.log(response.data);
-      }, function(){
-          console.log('error');
-      })
-    };
+  // searches for a list of cities via a string query
+  this.searchCities = function(){
+    $http({
+      method: 'GET',
+      url: '/zomato/' + controller.cityInput
+    }).then(function(response){
+        controller.locationSuggestions = response.data.location_suggestions;
+        console.log(response.data);
+    }, function(){
+        console.log('error');
+    })
+  };
 
-    // searches for a list of restaurants within a city by city ID
-    this.findRestaurants = function(id){
+  // searches for a list of restaurants within a city by city ID
+  this.findRestaurants = function(id){
+    $http({
+      method: "GET",
+      url: "/zomato/restaurants/" + id
+    }).then(function(response){
+      controller.foundRestaurants = response.data.restaurants;
+      console.log(controller.foundRestaurants);
+    }, function(error){
+      console.log(error);
+    })
+  };
+
+  // saves a restaurant to a user's favorites
+  this.saveRestaurant = function(){
+    if($scope.$parent.main.sessionActive){
       $http({
-        method: "GET",
-        url: "/zomato/restaurants/" + id
+        method:'PUT',
+        url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
+        data: controller.restaurantDetail
       }).then(function(response){
-        controller.foundRestaurants = response.data.restaurants;
-        console.log(controller.foundRestaurants);
+        console.log(response);
       }, function(error){
-        console.log(error);
+          console.log(error);
       })
+    } else {
+        console.log('not logged in');
     }
+  };
 
+  // shows restaurant detail modal
+  this.showRestaurantDetail = function(ind){
+    this.isViewRestaurantActive = true;
+    this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
+  };
 
-    this.showRestaurantDetail = function(ind){
-      this.isViewRestaurantActive = true;
-      this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
-      console.log(this.restaurantDetail);
-    };
+  // hides the restaurant detail modal
+  this.closeRestaurantDetail = function(){
+    this.isViewRestaurantActive = false;
+  };
 
-    this.closeRestaurantDetail = function(){
-      this.isViewRestaurantActive = false;
-    };
-
-
-
-}])
+}]);

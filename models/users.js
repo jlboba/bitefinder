@@ -5,7 +5,7 @@ var userSchema = mongoose.Schema({
   password: {type:String, required:true},
   name: {type: String},
   city: {type: String},
-  favorites: [String],
+  favorites: Array,
   latitude: {type: String},
   longitude: {type: String}
 });
