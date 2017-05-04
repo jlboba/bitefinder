@@ -17,16 +17,19 @@ main {
 }
 input[type=submit], input[type=text], input[type=password] {
   display: block;
-  font-size: 16px;
+  font-size: 12px;
   padding: 5px;
   margin-top: 5px;
 }
 input[type=submit], button {
   background-color: #EEEEEE;
-  padding: 5px 15px;
+  padding: 2px 12px;
   margin-top: 5px;
   text-transform: uppercase;
   border: 2px solid #CCCCCC;
+}
+button {
+  border-radius: 5px;
 }
 
 /* =============== HEADER =============== */
@@ -41,10 +44,10 @@ header > h1 {
   font-weight: bolder;
   font-size: 28px;
   letter-spacing: 7px;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 header > p {
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 5px;
   width: 285px;
@@ -87,8 +90,8 @@ nav > ul {
   display: block;
   width: 100%;
   max-width: 450px;
-  padding: 10px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 14px;
   cursor: pointer;
   text-align: center;
   margin: 5px 15px 5px 15px;
@@ -111,7 +114,7 @@ nav > ul {
   max-width: 855px;
   margin: 0 auto;
   margin-bottom: 40px;
-  padding: 2%;
+  padding: 10px;
 }
 #search-container {
   width: 286px;
@@ -122,28 +125,47 @@ nav > ul {
   flex-wrap: wrap;
 }
 h3 {
-  font-size: 28px;
+  font-size: 20px;
 }
 #search-input {
   width: 100%;
 }
+#search-form {
+  padding-bottom: 10px;
+}
 #fork {
-  height: 130px;
+  height: 100px;
   margin-right: 15px;
 }
-#location-results {
+#location-results > div {
   background-color: #EEEEEE;
+  font-size: 12px;
   border-radius: 5px;
-  margin-top: 25px;
+  height: 100px;
+  overflow: auto;
 }
-#location-results > ul {
-  margin: 0;
+#location-results * ul {
+  display: table;
+  margin: 0 auto;
   list-style: none;
-  text-align: center;
   padding: 10px;
 }
+#location-results * li {
+  cursor: pointer;
+  display: table-row;
+  text-align: right;
+}
+#location-results * li:hover {
+  color: #ff5e4c;
+}
+#location-results * a {
+  display: table-cell;
+}
+.fa-trash-o, .fa-map-pin {
+  margin-left: 10px;
+}
 
-/* =============== SEARCH RESULTS =============== */
+/* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
   box-shadow: 0px 0px 6px 6px #3db1c3;
   display: flex;
@@ -151,29 +173,34 @@ h3 {
   align-items: flex-start;
   flex-wrap: wrap;
 }
-.result {
+#filter {
+  width: 100%;
+}
+.result, .favorite {
   background-color: #EEEEEE;
   border-radius: 5px;
   margin: 5px auto;
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
-  width: 90vw;
-  min-width: 280px;
+  width: 100%;
   max-width: 522px;
   max-height: 200px;
 }
-.result:hover {
+.result:hover, .favorite:hover {
   background-color: #fcedea;
 }
-.result:hover p:first-of-type {
+.result > h3, .favorite > h3 {
+  font-size: 18px;
+  line-height: 1;
+}
+.result:hover > h3, .favorite:hover > h3 {
   color: #ff5e4c;
 }
-.result > p {
+.result > p, .favorite > p {
   line-height: 1.5;
+  font-size: 12px;
 }
-.result > p:first-of-type {
-  font-size: 24px;
-}
+
 
 /* =============== VIEW RESTAURANT =============== */
 #modal {
@@ -188,15 +215,95 @@ h3 {
 }
 #modal-box {
   background-color: #FFFFFF;
-  margin: 100px auto;
-  padding: 5vw;
-  height: 80vw;
-  width: 80vw;
+  overflow: auto;
+  margin: 16px;
+  padding: 20px;
+  height: 90%;
+  max-height: 850px;
+  width: 90%;
+  max-width: 800px;
+  min-width: 300px;
   border-radius: 5px;
 }
-#modal-box > img {
-  height: 200px;
+#modal-header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+#modal-header > img {
+  height: 100px;
+}
+#modal-box > img {
+  margin: 10px auto;
+  display: block;
+  width: 300px;
+}
+hr {
+  border: 3px solid #ff5e4c;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#zomato-link {
+  display: block;
+  margin-top: 60px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ff5e4c;
+}
+#fave-link {
+  background-color: #FFFFFF;
+  border: 3px solid #ff5e4c;
+  border-radius: 5px;
+}
+
+/* =============== CUISINE FILTER =============== */
+#filter-container {
+  max-width: 561px;
+  margin: 0 auto;
+  padding: 10px;
+}
+#filter-container > h3, #filter-container > p {
+  text-align: center;
+}
+#filter-container > p {
+  line-height: 2;
+}
+#cuisine-list > span {
+  background-color: #EEEEEE;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 5px;
+}
+#cuisine-list > span:hover {
+  color: #ff5e4c;
+}
+.query {
+  box-shadow: 0px 0px 3px 3px #3db1c3;
+}
+#cuisine-list > input[type=submit] {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+#filter-button {
+  border: 3px solid #ff5e4c;
+  font-size: 12px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 10px auto;
+}
+#filter-button:hover {
+  background-color: #EEEEEE;
+}
+
 /* =============== LOG IN =============== */
 .login-reg {
   display: flex;
@@ -212,7 +319,6 @@ h3 {
 
 /* =============== FOOTER =============== */
 footer {
-  width: 100vw;
   text-align: center;
   background-color: #fcedea;
   margin-top: 80px;
@@ -220,7 +326,7 @@ footer {
 }
 footer > p {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   min-width: 315px;
 
 }
@@ -238,8 +344,24 @@ footer > p {
   #search-container {
     width: 100%;
   }
+  .result {
+    min-width: none;
+    width: 45%;
+  }
   .login-reg-header {
     width: 80%;
+  }
+  #modal-box {
+    margin: 5%;
+  }
+  #modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  #modal-body > div {
+    margin-left: 5%;
   }
 }
 
@@ -247,50 +369,41 @@ footer > p {
 @media (min-width: 900px){
   .navlink {
     width: auto;
-    font-size: 14px;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding: 10px 16px 10px 16px;
     margin-left: 10px;
     margin-right: 10px;
-  }
-  #fork {
-    height: 100px;
-  }
-  h3 {
-    font-size: 24px;
-  }
-  input {
-    font-size: 14px;
-  }
-  footer > p {
-    font-size: 12px;
-  }
-  #gallery {
-    box-shadow: 0px 0px 6px 6px #3db1c3;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  input[type=submit], input[type=text], input[type=password] {
-    font-size: 12px;
-  }
-  input[type=submit], button {
-    padding: 2px 12px;
   }
   .login-reg-header {
     width: 60%;
   }
-  .login-reg-header > h3 {
-    font-size: 20px;
-  }
   .login-reg-header > p {
     font-size: 12px;
+  }
+  #modal-box {
+    margin: auto;
+    margin-top: 45px;
+  }
+  .location {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #search-container {
+    margin: 0 auto;
+    width: 50%;
+  }
+  #location-results {
+    width: 50%;
+    background-color: #EEEEEE;
+    border-radius: 5px;
+  }
+  #location-results > div {
+    height: 130px;
   }
 }
 
 /* =============== DESKTOP (> 1200) =============== */
 
+/*Break out the search boxes to the left side of the screen - push the results box to the right side of the screen*/
 
 /* =============== COLOR DICTIONARY =============== */
 

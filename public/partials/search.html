@@ -1,54 +1,22 @@
 <section ng-controller="ZomatoController as zomato">
-  <div class="wrapper">
-    <div id="search-container">
-      <img src="img/fork.png" alt="Fork and spoon" id="fork">
-      <div id="search-form">
-        <h3>Search by Location</h3>
-        <form ng-submit="zomato.searchCities()">
-          <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
-          <input type="submit" value="Search">
-        </form>
-      </div>
-    </div>
-    <div>
-      <div id="location-results">
-        <ul>
-          <li ng-repeat="location in zomato.locationSuggestions" ng-click="zomato.findRestaurants(location.id);">{{location.name}}</li>
-        </ul>
-      </div>
-    </div>
+
+  <!-- ======= Location Search ======= -->
+  <div class="wrapper location" ng-include="'partials/search/location.html'"></div>
+
+  <!-- ======= Saved Locations Toggles only if a User is Logged in ======= -->
+  <div class="wrapper location" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
+
+  <!-- ======= Search Results ======= -->
+  <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
+
+    <!-- ======== Filter by Cuisine Type ======= -->
+    <div ng-include="'/partials/search/filter.html'" id="filter-container"></div>
+
+    <!-- ========= Restaurant Listings Begin Here ======== -->
+    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);" ng-include="'partials/search/restaurant-results.html'"></div>
+
   </div>
-  <div class="wrapper" id="gallery">
-    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants">
-      <p ng-click="zomato.showRestaurantDetail($index);">
-        {{restaurant.restaurant.name}}
-      </p>
-      <p>
-        <i class="fa fa-cutlery" aria-hidden="true"></i> {{restaurant.restaurant.cuisines}}
-      </p>
-      <!-- Conditional ng-if statements: repeat the dollar icon based on .price_range value -->
-      <p ng-if="restaurant.restaurant.price_range === 1">
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 2">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 3">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 4">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p>
-        <i class="fa fa-star" aria-hidden="true"></i> {{restaurant.restaurant.user_rating.aggregate_rating}} / {{restaurant.restaurant.user_rating.votes}} votes
-      </p>
-    </div> <!-- ng-repeat through an array of search results -->
-  </div>
-  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
+
+  <!-- ======== Modal Popup to Display One Restaurant ======= -->
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/search/modal.html'"></div>
 </section>

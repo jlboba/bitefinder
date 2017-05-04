@@ -13,8 +13,9 @@ router.post('/', function(req,res){
 });
 
 // =============== PUT ROUTES ========================
+// adds a restaurant to a user's favorites
 router.put('/favorites/:id', function(req, res){
-  console.log(req.body);
+  //console.log(req.body);
   User.findById(req.params.id, function(err, foundUser){
     foundUser.favorites.push(req.body);
     foundUser.save(function(err, savedUser){
@@ -33,6 +34,13 @@ router.put('/:id', function(req, res){
 });
 
 // =============== DELETE ROUTE =======================
+// delets a restaurant from a user's favorites
+router.delete('/favorites/:id/:restaurantId', function(req, res){
+  User.findByIdAndUpdate(req.params.id, { $pull: {"favorites":{"id": req.params.restaurantId}}}, {new:true}, function(err, foundUser){
+      res.json(foundUser);
+  });
+});
+
 router.delete('/:id', function(req, res){
   User.findByIdAndRemove(req.params.id, function(error, deletedUser){
     res.json(deletedUser);
