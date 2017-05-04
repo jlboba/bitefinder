@@ -185,9 +185,10 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       method: 'GET',
       url: '/zomato/' + $scope.$parent.main.sessionUser.latitude + '/' + $scope.$parent.main.sessionUser.longitude
     }).then(function(response){
+        controller.activeLocationId = response.data.location.city_id;
         controller.isViewGalleryActive = true;
-        controller.defaultLocation;
         controller.foundRestaurants = response.data.nearby_restaurants;
+        controller.locationName = response.data.location.city_name;
     }, function(){
         console.log('error');
     })
@@ -212,8 +213,11 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       method: "GET",
       url: "/zomato/restaurants/" + id
     }).then(function(response){
+      controller.locationName = response.data.restaurants[0].restaurant.location.city;
       controller.foundRestaurants = response.data.restaurants;
+      controller.regularSearch = true;
       controller.isViewGalleryActive = true;
+      controller.defaultLocation = false;
       controller.activeLocationId = id;
     }, function(error){
       console.log(error);
@@ -417,6 +421,9 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.defaultLocationSearch = function(){
     if($scope.$parent.main.sessionActive){
       this.longLat();
+      this.defaultLocation = true;
+    } else {
+        console.log('couldn\'t log in!');
     }
   }
 }]);

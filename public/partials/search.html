@@ -9,6 +9,18 @@
   <!-- ======= Search Results ======= -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
 
+    <!-- ====== Shows Location restaurants are from ===== -->
+      <!-- ===== If Default Location ==== -->
+      <div ng-if="zomato.defaultLocation" class="results-header">
+        <h2>Looks like you're in {{zomato.locationName}}</h2>
+        <h4>Not what you're looking for? Try a search!</h4>
+      </div>
+
+      <!-- ==== If Regular Search === -->
+      <div ng-if="zomato.regularSearch" class="results-header">
+        <h2>Currently showing locations in {{zomato.locationName}}</h2>
+      </div>
+
     <!-- ======== Filter by Cuisine Type ======= -->
     <div ng-include="'/partials/search/filter.html'" id="filter-container"></div>
 
