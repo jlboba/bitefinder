@@ -127,6 +127,13 @@ nav > ul {
 h3 {
   font-size: 20px;
 }
+.results-header {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid  #eee;
+  box-sizing: border-box;
+}
 #search-input {
   width: 100%;
 }
