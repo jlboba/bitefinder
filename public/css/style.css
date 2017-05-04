@@ -11,6 +11,7 @@ body {
   font-family: 'Droid Serif', serif;
   color: #000000;
   min-width: 315px;
+  margin-bottom: 100px;
 }
 main {
   background-color: #FFFFFF;
@@ -171,6 +172,19 @@ h3 {
 .fa-trash-o, .fa-map-pin {
   margin-left: 10px;
 }
+#food-banner {
+  height: 300px;
+  overflow: hidden;
+  text-align: center;
+}
+#plate {
+  height: 300px;
+  display: inline-block;
+}
+#cupcakes {
+  height: 300px;
+  display: none;
+}
 
 /* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
@@ -279,6 +293,7 @@ hr {
 }
 #cuisine-list > span {
   background-color: #EEEEEE;
+  background-color: #fcedea;
   font-size: 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -324,8 +339,22 @@ hr {
   width: 100%;
 }
 
+/* =============== FAVORITES ============== */
+.favorites-header {
+  text-align: center;
+}
+.favorites-header > h3 {
+  font-size: 18px;
+}
+.favorites-header > p {
+  font-size: 12px;
+}
+
 /* =============== FOOTER =============== */
 footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   text-align: center;
   background-color: #fcedea;
   margin-top: 80px;
@@ -340,6 +369,14 @@ footer > p {
 .footerlink {
   text-decoration: none;
   color: red;
+}
+/* =============== @ 465px & below =============== */
+@media (max-width: 465px){
+  #plate {
+    width: 100vw;
+    height: auto;
+    min-height: 226px;
+  }
 }
 
 /* =============== MOBILE (> 600) =============== */
@@ -369,6 +406,9 @@ footer > p {
   }
   #modal-body > div {
     margin-left: 5%;
+  }
+  #cupcakes {
+    display: inline-block;
   }
 }
 

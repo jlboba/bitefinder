@@ -219,6 +219,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       controller.isViewGalleryActive = true;
       controller.defaultLocation = false;
       controller.activeLocationId = id;
+      controller.cuisineSearch = 'all';
     }, function(error){
       console.log(error);
     })
