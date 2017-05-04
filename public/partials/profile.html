@@ -1,17 +1,22 @@
 
 <section class="wrapper" ng-if="main.sessionUser.username">
 
-  <div id="profile-info" class="login-reg-header">
-    <div ng-if="!main.editingUser">
-      <h3>User Profile</p>
-      <p>Username: {{main.sessionUser.username}}</p>
-      <p>Display Name: {{main.sessionUser.name}}</p>
-      <p>City: {{main.sessionUser.city}}</p>
-      <button type="button" ng-click="main.editUser();">Edit Profile</button>
-      <button type="button" ng-click="main.logOut();">Log Out</button>
+  <div id="profile-info">
+    <div ng-if="!main.editingUser" class="profile-row">
+      <div class="profile-image">
+        <img src="http://placehold.it/150x150.png" />
+      </div>
+      <div class="profile-stats">
+        <h2>{{main.sessionUser.name}}</h2>
+        <p>
+          {{main.sessionUser.username}} <span ng-if="main.sessionUser.city">// {{main.sessionUser.city}}</span>
+        </p>
+        <button type="button" ng-click="main.editUser();">Edit Profile</button>
+        <button type="button" ng-click="main.deleteUser();">Delete Account</button>
+        <button type="button" ng-click="main.logOut();">Log Out</button>
+      </div>
     </div>
-
-    <div ng-if="main.editingUser" class="form-style-2">
+    <div ng-if="main.editingUser" class="login-reg-header form-style-2">
       <h3>Edit User Profile</h3>
       <label for="username"><span>Username:</span> <input type="text" ng-model="main.editUserData.username" value="main.editUserData.username" name="username" class="input-field"></label>
       <label for="password"><span>Password:</span> <input type="password" ng-model="main.newPassword" placeholder="Not Required" name="password" class="input-field"></label>
@@ -20,13 +25,6 @@
       <button type="button" ng-click="main.updateUser();">Update Profile</button>
       <button type="button"  ng-click="main.cancelEditUser();">Cancel</button>
       <button type="button" ng-click="main.logOut();">Log Out</button>
-    </div>
-
-    <div id="delete-account">
-      <p class="warning">Delete Account</p>
-      <p>Are you sure?</p>
-      <p>This action cannot be undone.</p>
-      <button type="button" ng-click="main.deleteUser();">Yes, I'm Sure</button>
     </div>
   </div>
 </section>
