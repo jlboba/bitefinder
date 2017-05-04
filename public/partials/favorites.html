@@ -1,4 +1,4 @@
-<section class="wrapper" ng-controller="ZomatoController as zomato">
+<section class="wrapper">
   <div class="favorite" ng-repeat="favorite in main.sessionUser.favorites" ng-click="zomato.showFavoriteRestaurantDetail($index);">
     <h3>
       {{favorite.name}}
