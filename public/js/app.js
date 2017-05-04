@@ -72,7 +72,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
         controller.sessionUser = response.data;
         controller.userLoginFailed = false;
         controller.sessionActive = true;
-        console.log(controller.sessionUser);
+        $scope.$$childTail.zomato.defaultLocationSearch();
         // send to landing page
       }
     }, function(){
@@ -185,7 +185,9 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       method: 'GET',
       url: '/zomato/' + $scope.$parent.main.sessionUser.latitude + '/' + $scope.$parent.main.sessionUser.longitude
     }).then(function(response){
-        console.log(response);
+        controller.isViewGalleryActive = true;
+        controller.defaultLocation;
+        controller.foundRestaurants = response.data.nearby_restaurants;
     }, function(){
         console.log('error');
     })
@@ -199,7 +201,6 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     }).then(function(response){
         controller.locationSuggestions = response.data.location_suggestions;
         controller.isViewLocationResultsActive = true;
-        console.log(response.data);
     }, function(){
         console.log('error');
     })
@@ -214,8 +215,6 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       controller.foundRestaurants = response.data.restaurants;
       controller.isViewGalleryActive = true;
       controller.activeLocationId = id;
-      console.log(controller.foundRestaurants);
-      console.log(controller.activeLocationId);
     }, function(error){
       console.log(error);
     })
@@ -411,6 +410,13 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       })
     } else {
         console.log('not logged in!');
+    }
+  }
+
+  // calls longLat function if user logged in successfully
+  this.defaultLocationSearch = function(){
+    if($scope.$parent.main.sessionActive){
+      this.longLat();
     }
   }
 }]);
