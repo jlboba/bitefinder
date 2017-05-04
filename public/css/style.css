@@ -164,15 +164,17 @@ h3 {
 .fa-trash-o, .fa-map-pin {
   margin-left: 10px;
 }
+#food-banner {
+  height: 300px;
+  overflow: hidden;
+  text-align: center;
+}
 #plate {
-  width: 100%;
-  display: block;
-  margin: -20px auto;
+  height: 300px;
+  display: inline-block;
 }
-#plate2 {
-  display: none;
-}
-#shrimp {
+#cupcakes {
+  height: 300px;
   display: none;
 }
 /* =============== RESTAURANT SEARCH RESULTS =============== */
@@ -383,6 +385,9 @@ footer > p {
   }
   #modal-body > div {
     margin-left: 5%;
+  }
+  #cupcakes {
+    display: inline-block;
   }
 }
 
