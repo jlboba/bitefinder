@@ -1,8 +1,8 @@
 <section class="wrapper" ng-controller="ZomatoController as zomato">
   <div class="favorite" ng-repeat="favorite in main.sessionUser.favorites" ng-click="zomato.showFavoriteRestaurantDetail($index);">
-    <p>
+    <h3>
       {{favorite.name}}
-    </p>
+    </h3>
     <p>
       <i class="fa fa-cutlery" aria-hidden="true"></i> {{favorite.cuisines}} / <i class="fa fa-map-marker"></i> {{favorite.location.city}}
     </p>
