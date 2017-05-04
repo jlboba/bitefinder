@@ -3,8 +3,8 @@
   <!-- ======= Location Search ======= -->
   <div class="wrapper location" ng-include="'partials/search/location.html'"></div>
 
-  <!-- ======= Saved Locations Toggles only if a User is Logged in ======= -->
-  <div class="wrapper location" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
+  <!-- ======= Saved Locations (toggles only if a user is logged in and has saved locations) ======= -->
+  <div class="wrapper location" ng-if="main.sessionActive && main.sessionUser.savedLoc.length > 0" ng-include="'partials/search/saved-location.html'"></div>
 
   <!-- ======= Photo Banner ======= -->
   <div id="food-banner" ng-if="!zomato.isViewGalleryActive">

@@ -370,7 +370,7 @@ hr {
 }
 .edit-buttons {
   display: block;
-  background-color: #ff5e4c;
+  background-color: #3db1c3;
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 30px;
@@ -386,10 +386,33 @@ hr {
 }
 .edit-buttons:hover {
   background: #eee;
-  color: #3db1c3;
+  color: #ff5e4c;
   transition: 0.5s;
   -moz-transition: 0.5s;
   -webkit-transition: 0.5s;
+}
+.edit-form {
+  border-top: 1px solid #eee;
+  width: 70%;
+  margin: 0 auto;
+}
+.edit-form h3 {
+  width: 100%;
+  text-align: center;
+}
+.edit-form input {
+  display: inline;
+}
+.edit-form label {
+  font-size: 12px;
+}
+.edit-form-row {
+  display: flex;
+  justify-content: space-around;
+}
+.edit-options {
+  width: 100%;
+  text-align: center;
 }
 /* =============== FAVORITES ============== */
 .favorites-header {
@@ -546,27 +569,3 @@ Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year
 Light Grey: #EEEEEE
 Med Grey: #CCCCCC
 Lightest Coral: #fcedea*/
-
-
-/* Edit User Profile Form Style */
-.form-style-2{
-    max-width: 500px;
-    padding: 20px 12px 10px 20px;
-    font: 13px Arial, Helvetica, sans-serif;
-}
-.form-style-2 label{
-    display: block;
-    margin: 0px 0px 15px 0px;
-}
-.form-style-2 label > span{
-    width: 100px;
-    font-weight: bold;
-    float: left;
-    padding-top: 8px;
-    padding-right: 5px;
-}
-
-.form-style-2 input.input-field{
-    width: 48%;
-
-}
