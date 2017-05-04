@@ -1,0 +1,20 @@
+<div id="search-container">
+  <img src="img/fork.png" alt="Fork and spoon" id="fork">
+  <div id="search-form">
+    <h3>Search by Location</h3>
+    <form ng-submit="zomato.searchCities()">
+      <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
+      <input type="submit" value="Search">
+    </form>
+  </div>
+</div>
+<div>
+  <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
+    <ul>
+      <li ng-repeat="location in zomato.locationSuggestions">
+        <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
+        <a ng-click="zomato.saveLocation(location);" ng-if="main.sessionActive"><i class="fa fa-map-pin" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </div>
+</div>

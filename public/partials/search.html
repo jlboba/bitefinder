@@ -1,94 +1,22 @@
 <section ng-controller="ZomatoController as zomato">
-  <!-- SEARCH FOR CITY NAME -->
-  <div class="wrapper">
-    <div id="search-container">
-      <img src="img/fork.png" alt="Fork and spoon" id="fork">
-      <div id="search-form">
-        <h3>Search by Location</h3>
-        <form ng-submit="zomato.searchCities()">
-          <input type="text" placeholder="Enter City Name" id="search-input" ng-model="zomato.cityInput">
-          <input type="submit" value="Search">
-        </form>
-      </div>
-    </div>
-    <div>
-      <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
-        <ul>
-          <li ng-repeat="location in zomato.locationSuggestions">
-            <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
-            <a ng-click="zomato.saveLocation(location);" ng-if="main.sessionActive"><i class="fa fa-map-pin" aria-hidden="true"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- SAVED LOCATIONS TOGGLES ONLY IF A USER IS LOGGED IN-->
-  <div class="wrapper" ng-if="main.sessionActive">
-    <div id="search-container">
-      <img src="img/fork.png" alt="Fork and spoon" id="fork">
-      <h3>Saved Locations</h3>
-    </div>
-    <div>
-      <div id="location-results">
-        <ul>
-          <li ng-repeat="location in main.sessionUser.savedLoc">
-            <a ng-click="zomato.findRestaurants(location.cityId);">{{location.name}}</a>
-            <a ng-click="zomato.deleteLocation(location);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- DISPLAYS RESTAURANTS FOUND IN A LOCATION -->
+
+  <!-- ======= Location Search ======= -->
+  <div class="wrapper" ng-include="'partials/search/location.html'"></div>
+
+  <!-- ======= Saved Locations Toggles only if a User is Logged in ======= -->
+  <div class="wrapper" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
+
+  <!-- ======= Search Results ======= -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
-    <div id="filter-container">
-      <h3>Select a Filter</h3>
-      <p id="cuisine-list">
-        <span ng-click="zomato.cuisineSearch = 'all'" ng-class="{query: zomato.cuisineSearch === 'all'}">All</span>
-        <span ng-click="zomato.cuisineSearch = 'coffee and tea'" ng-class="{query: zomato.cuisineSearch === 'coffee and tea'}">Coffee & Tea</span>
-        <span ng-click="zomato.cuisineSearch = 'american'" ng-class="{query: zomato.cuisineSearch === 'american'}">American</span>
-        <span ng-click="zomato.cuisineSearch = 'breakfast'" ng-class="{query: zomato.cuisineSearch === 'breakfast'}">Breakfast</span>
-        <span ng-click="zomato.cuisineSearch = 'vegetarian'" ng-class="{query: zomato.cuisineSearch === 'vegetarian'}">Vegetarian</span>
-        <span ng-click="zomato.cuisineSearch = 'mexican'" ng-class="{query: zomato.cuisineSearch === 'mexican'}">Mexican</span>
-        <span ng-click="zomato.cuisineSearch = 'pizza'" ng-class="{query: zomato.cuisineSearch === 'pizza'}">Pizza</span>
-        <span ng-click="zomato.cuisineSearch = 'sushi'" ng-class="{query: zomato.cuisineSearch === 'sushi'}">Sushi</span>
-        <span ng-click="zomato.cuisineSearch = 'sandwich'" ng-class="{query: zomato.cuisineSearch === 'sandwich'}">Sandwich</span>
-        <span ng-click="zomato.cuisineSearch = 'desserts'" ng-class="{query: zomato.cuisineSearch === 'desserts'}">Desserts</span>
-        <span ng-click="zomato.cuisineSearch = 'japanese'" ng-class="{query: zomato.cuisineSearch === 'japanese'}">Japanese</span>
-        <span ng-click="zomato.cuisineSearch = 'bar food'" ng-class="{query: zomato.cuisineSearch === 'bar food'}">Bar Food</span>
-      </p>
-      <p ng-click="zomato.findRestaurantsByCuisine()" id="filter-button">Filter My Results</p>
-    </div>
-    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);">
-      <h3>
-        {{restaurant.restaurant.name}}
-      </h3>
-      <p>
-        <i class="fa fa-cutlery" aria-hidden="true"></i> {{restaurant.restaurant.cuisines}}
-      </p>
-      <!-- Conditional ng-if statements: repeat the dollar icon based on .price_range value -->
-      <p ng-if="restaurant.restaurant.price_range === 1">
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 2">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 3">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p ng-if="restaurant.restaurant.price_range === 4">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <i class="fa fa-money" aria-hidden="true"></i>
-      </p>
-      <p>
-        <i class="fa fa-star" aria-hidden="true"></i> {{restaurant.restaurant.user_rating.aggregate_rating}} / {{restaurant.restaurant.user_rating.votes}} votes
-      </p>
-    </div> <!-- ng-repeat through an array of search results -->
+
+    <!-- ======== Filter by Cuisine Type ======= -->
+    <div ng-include="'/partials/search/filter.html'" id="filter-container"></div>
+
+    <!-- ========= Restaurant Listings Begin Here ======== -->
+    <div class="result" ng-repeat="restaurant in zomato.foundRestaurants"  ng-click="zomato.showRestaurantDetail($index);" ng-include="'partials/search/restaurant-results.html'"></div>
+
   </div>
-  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/modal.html'"></div>
+
+  <!-- ======== Modal Popup to Display One Restaurant ======= -->
+  <div id="modal" ng-if="zomato.isViewRestaurantActive" ng-include="'partials/search/modal.html'"></div>
 </section>
