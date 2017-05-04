@@ -366,6 +366,14 @@ footer > p {
   text-decoration: none;
   color: red;
 }
+/* =============== @ 465px & below =============== */
+@media (max-width: 465px){
+  #plate {
+    width: 100vw;
+    height: auto;
+    min-height: 226px;
+  }
+}
 
 /* =============== MOBILE (> 600) =============== */
 @media (min-width: 600px){
