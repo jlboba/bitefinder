@@ -295,6 +295,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
 
   // shows restaurant detail modal
   this.showRestaurantDetail = function(ind){
+    this.isFavoriteRestaurant = false;
     this.isViewRestaurantActive = true;
     this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
     if (this.restaurantDetail.featured_image === ''){
