@@ -139,15 +139,21 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
       url: '/users/' + controller.sessionUser._id,
      data: controller.submitUserData
    }).then(function(response){
-      //console.log(response.data);
+      console.log(response.data);
       controller.editingUser = false;
       controller.sessionUser = {
         username: response.data.username,
         password: response.data.password,
         name: response.data.name,
         city: response.data.city,
-        profilePic: response.data.profilePic
-       };
+        profilePic: response.data.profilePic,
+        _id: response.data._id,
+        favorites: response.data.favorites,
+        latitude: response.data.latitude,
+        longitude: response.data.longitude,
+        savedLoc: response.data.savedLoc
+      };
+      console.log(controller.sessionUser);
    }, function(){
      console.log('Failed in update user');
    })
