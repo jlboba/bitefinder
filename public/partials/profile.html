@@ -3,8 +3,11 @@
 
   <div id="profile-info">
     <div ng-if="!main.editingUser" class="profile-row">
-      <div class="profile-image">
+      <div class="profile-image" ng-if="main.sessionUser.profilePic">
         <img ng-src="{{main.sessionUser.profilePic}}" />
+      </div>
+      <div class="profile-image" ng-if="!main.sessionUser.profilePic">
+        <img ng-src="../img/apple.png" />
       </div>
       <div class="profile-stats">
         <h2>{{main.sessionUser.name}}</h2>
@@ -29,6 +32,13 @@
       <label for="password"><span>Password:</span> <input type="password" ng-model="main.newPassword" placeholder="Not Required" name="password" class="input-field"></label>
       <label for="displayName"><span>Display Name:</span> <input type="text" ng-model="main.editUserData.name" value="main.editUserData.name" name="displayName" class="input-field"></label>
       <label for="city"><span>City:</span> <input type="text" ng-model="main.editUserData.city" value="main.editUserData.city" name="city" class="input-field"> </label>
+      <label for="profilepic">Profile Icon:</label>
+      <select placeholder="profile picture" ng-model="main.editUserData.profilePic" name="profilepic"/>
+        <option value="../img/apple.png">Apple</option>
+        <option value="../img/banana.png">Banana</option>
+        <option value="../img/cherry.png">Cherry</option>
+        <option value="../img/orange.png">Orange</option>
+      </select>
       <button type="button" ng-click="main.updateUser();">Update Profile</button>
       <button type="button"  ng-click="main.cancelEditUser();">Cancel</button>
       <button type="button" ng-click="main.logOut();">Log Out</button>

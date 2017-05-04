@@ -123,13 +123,15 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
         username: controller.editUserData.username,
         password: controller.newPassword,
         name: controller.editUserData.name,
-        city: controller.editUserData.city
+        city: controller.editUserData.city,
+        profilePic: controller.editUserData.profilePic
       }
     } else {
       controller.submitUserData = {
         username: controller.editUserData.username,
         name: controller.editUserData.name,
-        city: controller.editUserData.city
+        city: controller.editUserData.city,
+        profilePic: controller.editUserData.profilePic
       }
     }
     $http({
@@ -143,7 +145,9 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
         username: response.data.username,
         password: response.data.password,
         name: response.data.name,
-        city: response.data.city };
+        city: response.data.city,
+        profilePic: response.data.profilePic
+       };
    }, function(){
      console.log('Failed in update user');
    })
