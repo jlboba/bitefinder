@@ -11,6 +11,7 @@ body {
   font-family: 'Droid Serif', serif;
   color: #000000;
   min-width: 315px;
+  margin-bottom: 100px;
 }
 main {
   background-color: #FFFFFF;
@@ -127,6 +128,13 @@ nav > ul {
 h3 {
   font-size: 20px;
 }
+.results-header {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid  #eee;
+  box-sizing: border-box;
+}
 #search-input {
   width: 100%;
 }
@@ -163,6 +171,19 @@ h3 {
 }
 .fa-trash-o, .fa-map-pin {
   margin-left: 10px;
+}
+#food-banner {
+  height: 300px;
+  overflow: hidden;
+  text-align: center;
+}
+#plate {
+  height: 300px;
+  display: inline-block;
+}
+#cupcakes {
+  height: 300px;
+  display: none;
 }
 
 /* =============== RESTAURANT SEARCH RESULTS =============== */
@@ -272,6 +293,7 @@ hr {
 }
 #cuisine-list > span {
   background-color: #EEEEEE;
+  background-color: #fcedea;
   font-size: 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -317,8 +339,22 @@ hr {
   width: 100%;
 }
 
+/* =============== FAVORITES ============== */
+.favorites-header {
+  text-align: center;
+}
+.favorites-header > h3 {
+  font-size: 18px;
+}
+.favorites-header > p {
+  font-size: 12px;
+}
+
 /* =============== FOOTER =============== */
 footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   text-align: center;
   background-color: #fcedea;
   margin-top: 80px;
@@ -333,6 +369,14 @@ footer > p {
 .footerlink {
   text-decoration: none;
   color: red;
+}
+/* =============== @ 465px & below =============== */
+@media (max-width: 465px){
+  #plate {
+    width: 100vw;
+    height: auto;
+    min-height: 226px;
+  }
 }
 
 /* =============== MOBILE (> 600) =============== */
@@ -362,6 +406,9 @@ footer > p {
   }
   #modal-body > div {
     margin-left: 5%;
+  }
+  #cupcakes {
+    display: inline-block;
   }
 }
 
@@ -414,3 +461,27 @@ Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year
 Light Grey: #EEEEEE
 Med Grey: #CCCCCC
 Lightest Coral: #fcedea*/
+
+
+/* Edit User Porfile Form Style */
+.form-style-2{
+    max-width: 500px;
+    padding: 20px 12px 10px 20px;
+    font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-2 label{
+    display: block;
+    margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+    width: 100px;
+    font-weight: bold;
+    float: left;
+    padding-top: 8px;
+    padding-right: 5px;
+}
+
+.form-style-2 input.input-field{
+    width: 48%;
+
+}

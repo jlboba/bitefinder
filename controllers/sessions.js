@@ -11,6 +11,7 @@ router.get('/', function(req, res){
 
 // ===============  CREATE SESSION ROUTE (Login) ===================
 router.post('/', function(req,res){
+  // Not allowed password in blank
   if (req.body.password === undefined || req.body.password === '') {
     res.send('failed');
   } else {
