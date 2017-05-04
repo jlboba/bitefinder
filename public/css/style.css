@@ -11,6 +11,7 @@ body {
   font-family: 'Droid Serif', serif;
   color: #000000;
   min-width: 315px;
+  margin-bottom: 100px;
 }
 main {
   background-color: #FFFFFF;
@@ -351,6 +352,9 @@ hr {
 
 /* =============== FOOTER =============== */
 footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   text-align: center;
   background-color: #fcedea;
   margin-top: 80px;
