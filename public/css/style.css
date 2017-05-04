@@ -163,8 +163,11 @@ h3 {
   display: table-row;
   text-align: right;
 }
-#location-results * li:hover {
+#location-results * li > a:hover {
   color: #ff5e4c;
+}
+#location-results * li > i:hover {
+  color: #3db1c3;
 }
 #location-results * a {
   display: table-cell;
