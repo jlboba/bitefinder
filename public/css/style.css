@@ -370,7 +370,7 @@ hr {
 }
 .edit-buttons {
   display: block;
-  background-color: #ff5e4c;
+  background-color: #3db1c3;
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 30px;
@@ -386,7 +386,7 @@ hr {
 }
 .edit-buttons:hover {
   background: #eee;
-  color: #3db1c3;
+  color: #ff5e4c;
   transition: 0.5s;
   -moz-transition: 0.5s;
   -webkit-transition: 0.5s;

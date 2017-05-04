@@ -4,7 +4,7 @@
   <div id="profile-info">
     <div ng-if="!main.editingUser" class="profile-row">
       <div class="profile-image">
-        <img src="http://placehold.it/150x150.png" />
+        <img ng-src="{{main.sessionUser.profilePic}}" />
       </div>
       <div class="profile-stats">
         <h2>{{main.sessionUser.name}}</h2>

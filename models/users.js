@@ -8,7 +8,8 @@ var userSchema = mongoose.Schema({
   favorites: Array,
   latitude: {type: String},
   longitude: {type: String},
-  savedLoc: Array
+  savedLoc: Array,
+  profilePic: {type: String}
 });
 
 module.exports = mongoose.model('User', userSchema);
