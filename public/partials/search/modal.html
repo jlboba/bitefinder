@@ -23,7 +23,7 @@
           <form ng-submit="zomato.saveRestaurant()" ng-if="!zomato.isFavoriteRestaurant">
             <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
           </form>
-
+          <p ng-if="zomato.saveRestaurantSuccess" id="success">Success!</p>
           <!-- REMOVE FROM FAVORITES -->
           <form ng-submit="zomato.deleteRestaurant()" ng-if="zomato.isFavoriteRestaurant">
             <input type="submit" ng-if="main.sessionUser.username" value="Remove from Favorites"/>

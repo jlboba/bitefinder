@@ -178,6 +178,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.userReview = {};
   this.cuisineSearch = "all";
   this.activeLocationId = '';
+  this.saveRestaurantSuccess = false;
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -254,6 +255,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
         data: controller.restaurantDetail
       }).then(function(response){
+        controller.saveRestaurantSuccess = true;
         console.log(response);
       }, function(error){
           console.log(error);
@@ -295,6 +297,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
 
   // shows restaurant detail modal
   this.showRestaurantDetail = function(ind){
+    this.isFavoriteRestaurant = false;
     this.isViewRestaurantActive = true;
     this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
     if (this.restaurantDetail.featured_image === ''){
@@ -305,6 +308,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // hides the restaurant detail modal
   this.closeRestaurantDetail = function(){
     this.isViewRestaurantActive = false;
+    this.saveRestaurantSuccess = false;
   };
 
   // shows restaurant detail modal of favorite restaurants
@@ -313,6 +317,9 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isFavoriteRestaurant = true;
     this.viewRestaurantInd = ind;
     this.restaurantDetail = $scope.$parent.main.sessionUser.favorites[ind];
+    // this.restaurantDetail.isFavoriteRestaurant = true;
+    console.log($scope.$parent.main.sessionUser.favorites);
+    console.log(this.restaurantDetail);
     console.log(ind);
     //console.log(this.restaurantDetail);
     // console.log('user id ', $scope.$parent.main.sessionUser._id);
