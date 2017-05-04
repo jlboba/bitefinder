@@ -1,4 +1,9 @@
 <section class="wrapper" ng-controller="ZomatoController as zomato">
+  <div class="favorites-header">
+    <h3>Welcome to your Favorites Page!</h3>
+    <p>Here you can collect restaurant listings, and save your own personal notes to each restaurant.</p>    
+  </div>
+
   <div class="favorite" ng-repeat="favorite in main.sessionUser.favorites" ng-click="zomato.showFavoriteRestaurantDetail($index);">
     <h3>
       {{favorite.name}}

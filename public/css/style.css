@@ -271,7 +271,7 @@ hr {
   line-height: 2;
 }
 #cuisine-list > span {
-  background-color: #EEEEEE;
+  background-color: #fcedea;
   font-size: 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -315,6 +315,17 @@ hr {
   text-align: center;
   margin: 0 auto;
   width: 100%;
+}
+
+/* =============== FAVORITES PAGE =============== */
+.favorites-header {
+  text-align: center;
+}
+.favorites-header > h3 {
+  font-size: 18px;
+}
+.favorites-header > p {
+  font-size: 12px;
 }
 
 /* =============== FOOTER =============== */
