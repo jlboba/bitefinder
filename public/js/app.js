@@ -214,6 +214,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       controller.foundRestaurants = response.data.restaurants;
       controller.isViewGalleryActive = true;
       controller.activeLocationId = id;
+      controller.cuisineSearch = 'all';
       console.log(controller.foundRestaurants);
       console.log(controller.activeLocationId);
     }, function(error){
