@@ -178,6 +178,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   this.userReview = {};
   this.cuisineSearch = "all";
   this.activeLocationId = '';
+  this.saveRestaurantSuccess = false;
 
   // searches for restauruants within a location via long/lat
   this.longLat = function(){
@@ -254,6 +255,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
         url:'/users/favorites/' + $scope.$parent.main.sessionUser._id,
         data: controller.restaurantDetail
       }).then(function(response){
+        controller.saveRestaurantSuccess = true;
         console.log(response);
       }, function(error){
           console.log(error);
@@ -305,6 +307,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
   // hides the restaurant detail modal
   this.closeRestaurantDetail = function(){
     this.isViewRestaurantActive = false;
+    this.saveRestaurantSuccess = false; 
   };
 
   // shows restaurant detail modal of favorite restaurants
