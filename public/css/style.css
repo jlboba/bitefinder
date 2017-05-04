@@ -171,6 +171,19 @@ h3 {
 .fa-trash-o, .fa-map-pin {
   margin-left: 10px;
 }
+#food-banner {
+  height: 300px;
+  overflow: hidden;
+  text-align: center;
+}
+#plate {
+  height: 300px;
+  display: inline-block;
+}
+#cupcakes {
+  height: 300px;
+  display: none;
+}
 
 /* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
@@ -381,6 +394,9 @@ footer > p {
   }
   #modal-body > div {
     margin-left: 5%;
+  }
+  #cupcakes {
+    display: inline-block;
   }
 }
 
