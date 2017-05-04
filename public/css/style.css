@@ -97,10 +97,16 @@ nav > ul {
   text-align: center;
   margin: 5px 15px 5px 15px;
   color: #FFFFFF;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 .navlink:hover {
   background-color: #EEEEEE;
-  color: #000000;
+  color: #3db1c3;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
@@ -347,6 +353,44 @@ hr {
   width: 100%;
 }
 
+/* ============== USER PROFILE ============ */
+.profile-row {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+.profile-image, .profile-image img {
+  border-radius: 100%;
+}
+.profile-stats span {
+  margin: 10px;
+}
+.profile-stats p:nth-of-type(2) {
+  font-size: 13px;
+}
+.edit-buttons {
+  display: block;
+  background-color: #ff5e4c;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: center;
+  color: #FFFFFF;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  margin-bottom: 5px;
+}
+.edit-buttons:hover {
+  background: #eee;
+  color: #3db1c3;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
 /* =============== FAVORITES ============== */
 .favorites-header {
   text-align: center;
@@ -418,6 +462,36 @@ footer > p {
   #cupcakes {
     display: inline-block;
   }
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .profile-image {
+    width: 30%;
+    border-radius: 100%;
+  }
+  .profile-image img {
+    width: 100%;
+    border-radius: 100%;
+  }
+  .profile-stats {
+    width: 65%;
+  }
+  .profile-stats span {
+    margin: 10px;
+  }
+  .profile-stats p:nth-of-type(2){
+    font-size: 12px;
+  }
+  .profile-stats p:nth-of-type(3){
+    margin-top: 10px;
+  }
+  .edit-buttons {
+    display: inline-block;
+  }
 }
 
 /* =============== TABLET (> 900) =============== */
@@ -427,6 +501,9 @@ footer > p {
     padding: 10px 16px 10px 16px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
   }
   .login-reg-header {
     width: 60%;
@@ -471,7 +548,7 @@ Med Grey: #CCCCCC
 Lightest Coral: #fcedea*/
 
 
-/* Edit User Porfile Form Style */
+/* Edit User Profile Form Style */
 .form-style-2{
     max-width: 500px;
     padding: 20px 12px 10px 20px;
