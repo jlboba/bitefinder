@@ -164,7 +164,17 @@ h3 {
 .fa-trash-o, .fa-map-pin {
   margin-left: 10px;
 }
-
+#plate {
+  width: 100%;
+  display: block;
+  margin: -20px auto;
+}
+#plate2 {
+  display: none;
+}
+#shrimp {
+  display: none;
+}
 /* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
   box-shadow: 0px 0px 6px 6px #3db1c3;
