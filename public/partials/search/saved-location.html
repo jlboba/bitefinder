@@ -7,7 +7,7 @@
     <ul>
       <li ng-repeat="location in main.sessionUser.savedLoc">
         <a ng-click="zomato.findRestaurants(location.cityId);">{{location.name}}</a>
-        <a ng-click="zomato.deleteLocation(location);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        <i class="fa fa-trash-o fa-lg" aria-hidden="true" ng-click="zomato.deleteLocation(location);"></i>
       </li>
     </ul>
   </div>
