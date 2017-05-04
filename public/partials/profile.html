@@ -9,11 +9,18 @@
       <div class="profile-stats">
         <h2>{{main.sessionUser.name}}</h2>
         <p>
-          {{main.sessionUser.username}} <span ng-if="main.sessionUser.city">// {{main.sessionUser.city}}</span>
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+ {{main.sessionUser.username}} <span ng-if="main.sessionUser.city"><i class="fa fa-map-marker" aria-hidden="true"></i>
+ {{main.sessionUser.city}}</span>
         </p>
-        <button type="button" ng-click="main.editUser();">Edit Profile</button>
-        <button type="button" ng-click="main.deleteUser();">Delete Account</button>
-        <button type="button" ng-click="main.logOut();">Log Out</button>
+        <p>
+          {{main.sessionUser.favorites.length}} pinned restaurants <span>{{main.sessionUser.savedLoc.length}} saved locations</span>
+        </p>
+        <p>
+          <a ng-click="main.editUser();" class="edit-buttons">Edit Profile</a>
+          <a ng-click="main.deleteUser();" class="edit-buttons">Delete Account</a>
+          <a ng-click="main.logOut();" class="edit-buttons">Log Out</a>
+        </p>
       </div>
     </div>
     <div ng-if="main.editingUser" class="login-reg-header form-style-2">
