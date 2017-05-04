@@ -3,13 +3,13 @@
   <!-- ======= Location Search ======= -->
   <div class="wrapper location" ng-include="'partials/search/location.html'"></div>
 
-  <div id="food-banner">
-    <img src="/img/plate.jpg" alt="Plate of breakfast food with eggs and sausage" id="plate">
-    <img src="/img/cupcakes.jpg" alt="Frosted cupcakes with bacon sprinkles" id="cupcakes">    
-  </div>
-
   <!-- ======= Saved Locations Toggles only if a User is Logged in ======= -->
   <div class="wrapper location" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
+
+  <div id="food-banner" ng-if="!zomato.isViewGalleryActive">
+    <img src="/img/plate.jpg" alt="Plate of breakfast food with eggs and sausage" id="plate">
+    <img src="/img/cupcakes.jpg" alt="Frosted cupcakes with bacon sprinkles" id="cupcakes">
+  </div>
 
   <!-- ======= Search Results ======= -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
