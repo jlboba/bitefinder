@@ -279,6 +279,10 @@ hr {
   border-radius: 5px;
 }
 
+#success {
+  color: #ff5e4c;
+  font-size: 12px;
+}
 /* =============== CUISINE FILTER =============== */
 #filter-container {
   max-width: 561px;
