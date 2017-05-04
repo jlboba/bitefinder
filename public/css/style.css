@@ -461,3 +461,27 @@ Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year
 Light Grey: #EEEEEE
 Med Grey: #CCCCCC
 Lightest Coral: #fcedea*/
+
+
+/* Edit User Porfile Form Style */
+.form-style-2{
+    max-width: 500px;
+    padding: 20px 12px 10px 20px;
+    font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-2 label{
+    display: block;
+    margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+    width: 100px;
+    font-weight: bold;
+    float: left;
+    padding-top: 8px;
+    padding-right: 5px;
+}
+
+.form-style-2 input.input-field{
+    width: 48%;
+
+}
