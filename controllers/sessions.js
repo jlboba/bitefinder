@@ -11,18 +11,23 @@ router.get('/', function(req, res){
 
 // ===============  CREATE SESSION ROUTE (Login) ===================
 router.post('/', function(req,res){
-  User.findOne({username:req.body.username}, function(err, foundUser){
-    if (foundUser) {
-      if (bcrypt.compareSync(req.body.password,foundUser.password)){
-        req.session.sessionUser = foundUser;
-        res.json(req.session.sessionUser);
+  // Not allowed password in blank
+  if (req.body.password === undefined || req.body.password === '') {
+    res.send('failed');
+  } else {
+    User.findOne({username:req.body.username}, function(err, foundUser){
+      if (foundUser) {
+        if (bcrypt.compareSync(req.body.password,foundUser.password)){
+          req.session.sessionUser = foundUser;
+          res.json(req.session.sessionUser);
+        } else {
+          res.send('failed');
+        }
       } else {
-        res.send('failed')
+        res.send('failed');
       }
-    } else {
-      res.send('failed')
-    }
-  });
+    });
+  }
 });
 
 // ===============  DELETE SESSION ROUTE (Logout) ===================

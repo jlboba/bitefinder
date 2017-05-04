@@ -11,12 +11,13 @@
     </form>
   </div>
 
-  <section ng-if="main.userLoginFailed">
-    <p>Username/Password do not match</p>
+  <section ng-if="main.userLoginFailed" class="login-reg-header">
+    <h3>Username/Password do not match</h3>
   </section>
 
-  <section ng-if="!main.userLoginFailed && main.sessionUser.username">
-    <p>Welcome {{main.sessionUser.name}}</p>
+  <!-- added class to show text in center -->
+  <section ng-if="!main.userLoginFailed && main.sessionUser.username" class="login-reg-header">
+    <h3>Welcome {{main.sessionUser.name}}</h3>
   </section>
 
 </section>

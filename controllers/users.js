@@ -23,7 +23,7 @@ router.put('/favorites/:id', function(req, res){
     });
   });
 });
-
+// user update profile
 router.put('/:id', function(req, res){
   if (req.body.password !== undefined) {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)); // encrypt the password
