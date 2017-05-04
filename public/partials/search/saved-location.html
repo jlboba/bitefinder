@@ -2,8 +2,8 @@
   <img src="img/fork.png" alt="Fork and spoon" id="fork">
   <h3>Saved Locations</h3>
 </div>
-<div>
-  <div id="location-results">
+<div id="location-results">
+  <div>
     <ul>
       <li ng-repeat="location in main.sessionUser.savedLoc">
         <a ng-click="zomato.findRestaurants(location.cityId);">{{location.name}}</a>

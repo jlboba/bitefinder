@@ -8,8 +8,8 @@
     </form>
   </div>
 </div>
-<div>
-  <div id="location-results" ng-if="zomato.isViewLocationResultsActive">
+<div id="location-results">
+  <div ng-if="zomato.isViewLocationResultsActive">
     <ul>
       <li ng-repeat="location in zomato.locationSuggestions">
         <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>

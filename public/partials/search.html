@@ -1,10 +1,10 @@
 <section ng-controller="ZomatoController as zomato">
 
   <!-- ======= Location Search ======= -->
-  <div class="wrapper" ng-include="'partials/search/location.html'"></div>
+  <div class="wrapper location" ng-include="'partials/search/location.html'"></div>
 
   <!-- ======= Saved Locations Toggles only if a User is Logged in ======= -->
-  <div class="wrapper" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
+  <div class="wrapper location" ng-if="main.sessionActive" ng-include="'partials/search/saved-location.html'"></div>
 
   <!-- ======= Search Results ======= -->
   <div class="wrapper" id="gallery" ng-if="zomato.isViewGalleryActive">
