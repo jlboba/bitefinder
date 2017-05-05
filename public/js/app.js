@@ -88,8 +88,10 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
     }).then(function(response){
       controller.sessionUser = {};
       controller.currentUserData = {};
+      $scope.$$childTail.zomato.defaultLocation = false;
+      $scope.$$childTail.zomato.isViewGalleryActive = false;
       controller.sessionActive = false;
-      console.log(controller.sessionUser);
+      controller.tab = 1;
       // send to landing page
     }, function(){
       console.log('Failed in log out');
