@@ -1,4 +1,5 @@
 # BiteFinder
+<b>Live Site</b>: http://http://bitefinder.herokuapp.com/
 <!-- ============= TECHNOLOGIES USED ============= -->
 <h1>Technologies Used</h1>
 <p>BiteFinder is a single-page application that utilizes MongoDB, Express, Angular, and Node. It is powered by a third-party API called <a href="https://developers.zomato.com/documentation">Zomato</a>, which provides a database of restaurants that are searchable by location. The server provides RESTful routes for creating, editing, and deleting user profiles. For logging in and saving passwords, we used the NPM packages <a href="https://www.npmjs.com/package/express-session">express-session</a> and <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a>.</p>
