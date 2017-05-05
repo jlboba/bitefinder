@@ -1,10 +1,10 @@
 
 <section class="wrapper">
   <div class="login-reg">
-    <div class="login-reg-header">
-      <h3>Log In</h3>
-    </div>
     <form ng-submit="main.loginCheck()" ng-if="!main.sessionUser.username">
+      <div class="login-reg-header">
+        <h3>Log In</h3>
+      </div>
       <input type="text" name="username" placeholder="username" ng-model="main.currentUserData.username">
       <input type="password" name="password" placeholder="password" ng-model="main.currentUserData.password">
       <input type="submit" name="" value="Login">
@@ -13,11 +13,6 @@
 
   <section ng-if="main.userLoginFailed" class="login-reg-header">
     <h3>Username/Password do not match</h3>
-  </section>
-
-  <!-- added class to show text in center -->
-  <section ng-if="!main.userLoginFailed && main.sessionUser.username" class="login-reg-header">
-    <h3>Welcome {{main.sessionUser.name}}</h3>
   </section>
 
 </section>

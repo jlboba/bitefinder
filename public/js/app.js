@@ -69,11 +69,11 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
         controller.userLoginFailed = true;
         console.log('Username/Password not match');
       } else {
+        controller.tab = 1;
         controller.sessionUser = response.data;
         controller.userLoginFailed = false;
         controller.sessionActive = true;
         $scope.$$childTail.zomato.defaultLocationSearch();
-        // send to landing page
       }
     }, function(){
       console.log('Failed in login check');

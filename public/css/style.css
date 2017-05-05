@@ -129,6 +129,12 @@ nav > ul {
 }
 
 /* =============== SEARCH =============== */
+.welcome {
+  text-align:center;
+}
+.welcome h3 {
+  width: 100%;
+}
 .wrapper {
   box-shadow: 0px 0px 2px 2px #444A9E;
   border-radius: 5px;
