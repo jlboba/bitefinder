@@ -17,18 +17,18 @@
         </p>
             <!-- BUTTONS -->
         <div>
-          <a href="{{zomato.restaurantDetail.url}}" target="_blank" id="zomato-link">Zomato</a>
+          <a href="{{zomato.restaurantDetail.url}}" target="_blank" class="zomato-link">view on zomato</a>
 
           <!-- ADD TO FAVORITES -->
           <form ng-submit="zomato.saveRestaurant()" ng-if="!zomato.isFavoriteRestaurant">
-            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
+            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites"/>
           </form>
-          <p ng-if="zomato.saveRestaurantSuccess" id="success">Success!</p>
+          <p ng-if="zomato.saveRestaurantSuccess" id="success">Added!</p>
           <!-- REMOVE FROM FAVORITES -->
           <form ng-submit="zomato.deleteRestaurant()" ng-if="zomato.isFavoriteRestaurant">
             <input type="submit" ng-if="main.sessionUser.username" value="Remove from Favorites"/>
           </form>
-          <button class="button" ng-click="zomato.closeRestaurantDetail()" id="close-modal">Close</button>
+          <button ng-click="zomato.closeRestaurantDetail()" id="close-modal">close details</button>
         </div>
 
         <div ng-if="main.sessionUser.username && zomato.isFavoriteRestaurant">

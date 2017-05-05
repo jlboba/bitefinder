@@ -24,7 +24,7 @@ input[type=submit], input[type=text], input[type=password] {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-input[type=submit], button {
+input[type=submit], button, .zomato-link {
   padding: 2px 12px;
   margin-top: 5px;
   text-transform: uppercase;
@@ -36,7 +36,7 @@ input[type=submit], button {
   border: 1px solid #3db1c3;
   font-family: 'Droid Serif', serif;
 }
-input[type=submit]:hover, button:hover {
+input[type=submit]:hover, button:hover, .zomato-link:hover {
   background: #eee;
   color: #ff5e4c;
   border: 1px solid #eee;
@@ -46,8 +46,13 @@ input[type=submit]:hover, button:hover {
 }
 button {
   border-radius: 5px;
+  font-size: 12px;
 }
-
+.zomato-link {
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 5px;
+}
 /* =============== HEADER =============== */
 header {
   background-color: #3db1c3;
@@ -297,19 +302,6 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#zomato-link {
-  display: block;
-  margin-top: 60px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #ff5e4c;
-}
-#fave-link {
-  background-color: #FFFFFF;
-  border: 3px solid #ff5e4c;
-  border-radius: 5px;
-}
-
 #success {
   color: #ff5e4c;
   font-size: 12px;
