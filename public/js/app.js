@@ -69,11 +69,11 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
         controller.userLoginFailed = true;
         console.log('Username/Password not match');
       } else {
+        controller.tab = 1;
         controller.sessionUser = response.data;
         controller.userLoginFailed = false;
         controller.sessionActive = true;
         $scope.$$childTail.zomato.defaultLocationSearch();
-        // send to landing page
       }
     }, function(){
       console.log('Failed in login check');
@@ -88,8 +88,10 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
     }).then(function(response){
       controller.sessionUser = {};
       controller.currentUserData = {};
+      $scope.$$childTail.zomato.defaultLocation = false;
+      $scope.$$childTail.zomato.isViewGalleryActive = false;
       controller.sessionActive = false;
-      console.log(controller.sessionUser);
+      controller.tab = 1;
       // send to landing page
     }, function(){
       console.log('Failed in log out');
@@ -211,10 +213,16 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       method: 'GET',
       url: '/zomato/' + controller.cityInput
     }).then(function(response){
-        controller.locationSuggestions = response.data.location_suggestions;
-        controller.isViewLocationResultsActive = true;
+        if (response.data.location_suggestions.length > 0){
+          controller.locationSuggestions = response.data.location_suggestions;
+          controller.isViewLocationResultsActive = true;
+          controller.noCities = false;
+        } else {
+            controller.isViewLocationResultsActive = true;
+            controller.noCities = true;
+        }
     }, function(){
-        console.log('error');
+        console.log(error);
     })
   };
 
@@ -299,7 +307,6 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       }, function(){
           console.log('Failed in removing favorite restaurant');
       });
-
     } else {
       console.log('not logged in');
     }
@@ -311,7 +318,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isViewRestaurantActive = true;
     this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
     if (this.restaurantDetail.featured_image === ''){
-      this.restaurantDetail.featured_image = "/img/yum.png";
+      this.restaurantDetail.featured_image = "/img/defaultrestaurant.png";
     }
   };
 

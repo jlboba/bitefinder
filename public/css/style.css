@@ -16,23 +16,47 @@ body {
 main {
   background-color: #FFFFFF;
 }
+strong {
+  color: #444A9E;
+}
 input[type=submit], input[type=text], input[type=password] {
   display: block;
   font-size: 12px;
   padding: 5px;
   margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
-input[type=submit], button {
-  background-color: #EEEEEE;
+input[type=submit], button, .zomato-link {
   padding: 2px 12px;
   margin-top: 5px;
   text-transform: uppercase;
-  border: 2px solid #CCCCCC;
+  display: block;
+  background-color: #3db1c3;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: 1px solid #3db1c3;
+  font-family: 'Droid Serif', serif;
+}
+input[type=submit]:hover, button:hover, .zomato-link:hover {
+  background: #eee;
+  color: #ff5e4c;
+  border: 1px solid #eee;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 button {
   border-radius: 5px;
+  font-size: 12px;
 }
-
+.zomato-link {
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
 /* =============== HEADER =============== */
 header {
   background-color: #3db1c3;
@@ -43,7 +67,7 @@ header {
 }
 header > h1 {
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 38px;
   letter-spacing: 7px;
   margin-top: 0.5em;
 }
@@ -110,12 +134,18 @@ nav > ul {
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  box-shadow: 0px 0px 6px 6px #444A9E;
+  box-shadow: 0px 0px 2px 2px #444A9E;
 }
 
 /* =============== SEARCH =============== */
+.welcome {
+  text-align:center;
+}
+.welcome h3 {
+  width: 100%;
+}
 .wrapper {
-  box-shadow: 0px 0px 6px 6px #444A9E;
+  box-shadow: 0px 0px 2px 2px #444A9E;
   border-radius: 5px;
   width: 95%;
   max-width: 875px;
@@ -198,7 +228,7 @@ h3 {
 
 /* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
-  box-shadow: 0px 0px 6px 6px #3db1c3;
+  box-shadow: 0px 0px 2px 2px #3db1c3;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -276,19 +306,6 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#zomato-link {
-  display: block;
-  margin-top: 60px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #ff5e4c;
-}
-#fave-link {
-  background-color: #FFFFFF;
-  border: 3px solid #ff5e4c;
-  border-radius: 5px;
-}
-
 #success {
   color: #ff5e4c;
   font-size: 12px;
@@ -319,7 +336,7 @@ hr {
   color: #ff5e4c;
 }
 .query {
-  box-shadow: 0px 0px 3px 3px #3db1c3;
+  box-shadow: 0px 0px 2px 2px #3db1c3;
 }
 #cuisine-list > input[type=submit] {
   text-align: center;
@@ -351,6 +368,20 @@ hr {
   text-align: center;
   margin: 0 auto;
   width: 100%;
+}
+.login-form {
+  width: 40%;
+  margin: 0 auto;
+}
+.login-form h3 {
+  width: 100%;
+  text-align: center;
+}
+.login-form input[type=text], .login-form input[type=password] {
+  width: 100%;
+}
+.login-form input[type="submit"] {
+  margin-top: 10px;
 }
 
 /* ============== USER PROFILE ============ */
@@ -403,7 +434,7 @@ hr {
 .edit-form input {
   display: inline;
 }
-.edit-form label {
+.edit-form label, .edit-form span, .login-form span {
   font-size: 12px;
 }
 .edit-form-row {
@@ -514,6 +545,10 @@ footer > p {
   }
   .edit-buttons {
     display: inline-block;
+  }
+  .login-form-row {
+    display: flex;
+    justify-content: space-around;
   }
 }
 

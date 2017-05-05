@@ -1,5 +1,10 @@
 <section>
 
+  <!-- ======== Welcome Message for Logged In Users ======= -->
+  <div class="wrapper welcome" id="gallery" ng-if="!main.userLoginFailed && main.sessionUser.username">
+    <h3>Welcome, {{main.sessionUser.name}}!<br /> What can we find for you today?</h3>
+  </div>
+
   <!-- ======= Location Search ======= -->
   <div class="wrapper location" ng-include="'partials/search/location.html'"></div>
 
