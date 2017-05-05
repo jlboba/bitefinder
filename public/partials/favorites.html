@@ -2,6 +2,7 @@
   <div class="favorites-header">
     <h3>Welcome to Your Favorites Page!</h3>
     <p>Here you can collect restaurant listings, and save your own personal notes to each restaurant.</p>
+    <div ng-if="main.sessionUser.favorites.length <= 0" class="favorite" ng-click="main.tab = 1">Looks like you have no favorites, go pin some now!</div>
   </div>
   <div class="favorite" ng-repeat="favorite in main.sessionUser.favorites" ng-click="zomato.showFavoriteRestaurantDetail($index);">
     <h3>

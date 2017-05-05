@@ -9,26 +9,25 @@
       <img src="{{zomato.restaurantDetail.featured_image}}"> <br/>
       <div id="modal-body">
         <p>{{zomato.restaurantDetail.location.address}} <br/>
-          Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
-          Cost: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
-          Price Range: {{zomato.restaurantDetail.price_range}} <br/>
-          User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
-          {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
+          <strong>Cuisines</strong>: {{zomato.restaurantDetail.cuisines}} <br/>
+          <strong>Cost</strong>: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
+          <strong>Price Range</strong>: {{zomato.restaurantDetail.price_range}} <br/>
+          <strong>Rating</strong>: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)
         </p>
             <!-- BUTTONS -->
         <div>
-          <a href="{{zomato.restaurantDetail.url}}" target="_blank" id="zomato-link">Zomato</a>
+          <a href="{{zomato.restaurantDetail.url}}" target="_blank" class="zomato-link">view on zomato</a>
 
           <!-- ADD TO FAVORITES -->
           <form ng-submit="zomato.saveRestaurant()" ng-if="!zomato.isFavoriteRestaurant">
-            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites" id="fave-link"/>
+            <input type="submit" ng-if="main.sessionUser.username" value="Add to Favorites"/>
           </form>
-          <p ng-if="zomato.saveRestaurantSuccess" id="success">Success!</p>
+          <p ng-if="zomato.saveRestaurantSuccess" id="success">Added!</p>
           <!-- REMOVE FROM FAVORITES -->
           <form ng-submit="zomato.deleteRestaurant()" ng-if="zomato.isFavoriteRestaurant">
             <input type="submit" ng-if="main.sessionUser.username" value="Remove from Favorites"/>
           </form>
-          <button class="button" ng-click="zomato.closeRestaurantDetail()" id="close-modal">Close</button>
+          <button ng-click="zomato.closeRestaurantDetail()" id="close-modal">close details</button>
         </div>
 
         <div ng-if="main.sessionUser.username && zomato.isFavoriteRestaurant">

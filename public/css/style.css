@@ -16,23 +16,47 @@ body {
 main {
   background-color: #FFFFFF;
 }
+strong {
+  color: #444A9E;
+}
 input[type=submit], input[type=text], input[type=password] {
   display: block;
   font-size: 12px;
   padding: 5px;
   margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
-input[type=submit], button {
-  background-color: #EEEEEE;
+input[type=submit], button, .zomato-link {
   padding: 2px 12px;
   margin-top: 5px;
   text-transform: uppercase;
-  border: 2px solid #CCCCCC;
+  display: block;
+  background-color: #3db1c3;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: 1px solid #3db1c3;
+  font-family: 'Droid Serif', serif;
+}
+input[type=submit]:hover, button:hover, .zomato-link:hover {
+  background: #eee;
+  color: #ff5e4c;
+  border: 1px solid #eee;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 button {
   border-radius: 5px;
+  font-size: 12px;
 }
-
+.zomato-link {
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
 /* =============== HEADER =============== */
 header {
   background-color: #3db1c3;
@@ -43,7 +67,7 @@ header {
 }
 header > h1 {
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 38px;
   letter-spacing: 7px;
   margin-top: 0.5em;
 }
@@ -97,22 +121,34 @@ nav > ul {
   text-align: center;
   margin: 5px 15px 5px 15px;
   color: #FFFFFF;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 .navlink:hover {
   background-color: #EEEEEE;
-  color: #000000;
+  color: #3db1c3;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 /* Toggle this class for Tab currently in use (ng-show in index.html)*/
 .tab {
-  box-shadow: 0px 0px 6px 6px #444A9E;
+  box-shadow: 0px 0px 2px 2px #444A9E;
 }
 
 /* =============== SEARCH =============== */
+.welcome {
+  text-align:center;
+}
+.welcome h3 {
+  width: 100%;
+}
 .wrapper {
-  box-shadow: 0px 0px 6px 6px #444A9E;
+  box-shadow: 0px 0px 2px 2px #444A9E;
   border-radius: 5px;
   width: 95%;
-  max-width: 855px;
+  max-width: 875px;
   margin: 0 auto;
   margin-bottom: 40px;
   padding: 10px;
@@ -163,8 +199,11 @@ h3 {
   display: table-row;
   text-align: right;
 }
-#location-results * li:hover {
+#location-results * li > a:hover {
   color: #ff5e4c;
+}
+#location-results * li > i:hover {
+  color: #3db1c3;
 }
 #location-results * a {
   display: table-cell;
@@ -178,17 +217,18 @@ h3 {
   text-align: center;
 }
 #plate {
-  height: 300px;
+  min-width: 330px;
+  height: 293px;
   display: inline-block;
 }
 #cupcakes {
-  height: 300px;
+  height: 293px;
   display: none;
 }
 
 /* =============== RESTAURANT SEARCH RESULTS =============== */
 #gallery {
-  box-shadow: 0px 0px 6px 6px #3db1c3;
+  box-shadow: 0px 0px 2px 2px #3db1c3;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -266,19 +306,6 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#zomato-link {
-  display: block;
-  margin-top: 60px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #ff5e4c;
-}
-#fave-link {
-  background-color: #FFFFFF;
-  border: 3px solid #ff5e4c;
-  border-radius: 5px;
-}
-
 #success {
   color: #ff5e4c;
   font-size: 12px;
@@ -309,7 +336,7 @@ hr {
   color: #ff5e4c;
 }
 .query {
-  box-shadow: 0px 0px 3px 3px #3db1c3;
+  box-shadow: 0px 0px 2px 2px #3db1c3;
 }
 #cuisine-list > input[type=submit] {
   text-align: center;
@@ -342,7 +369,82 @@ hr {
   margin: 0 auto;
   width: 100%;
 }
+.login-form {
+  width: 40%;
+  margin: 0 auto;
+}
+.login-form h3 {
+  width: 100%;
+  text-align: center;
+}
+.login-form input[type=text], .login-form input[type=password] {
+  width: 100%;
+}
+.login-form input[type="submit"] {
+  margin-top: 10px;
+}
 
+/* ============== USER PROFILE ============ */
+.profile-row {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+.profile-image, .profile-image img {
+  border-radius: 100%;
+}
+.profile-stats span {
+  margin: 10px;
+}
+.profile-stats p:nth-of-type(2) {
+  font-size: 13px;
+}
+.edit-buttons {
+  display: block;
+  background-color: #3db1c3;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: center;
+  color: #FFFFFF;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  margin-bottom: 5px;
+}
+.edit-buttons:hover {
+  background: #eee;
+  color: #ff5e4c;
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+.edit-form {
+  border-top: 1px solid #eee;
+  width: 70%;
+  margin: 0 auto;
+}
+.edit-form h3 {
+  width: 100%;
+  text-align: center;
+}
+.edit-form input {
+  display: inline;
+}
+.edit-form label, .edit-form span, .login-form span {
+  font-size: 12px;
+}
+.edit-form-row {
+  display: flex;
+  justify-content: space-around;
+}
+.edit-options {
+  width: 100%;
+  text-align: center;
+}
 /* =============== FAVORITES ============== */
 .favorites-header {
   text-align: center;
@@ -414,6 +516,40 @@ footer > p {
   #cupcakes {
     display: inline-block;
   }
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .profile-image {
+    width: 30%;
+    border-radius: 100%;
+  }
+  .profile-image img {
+    width: 100%;
+    border-radius: 100%;
+  }
+  .profile-stats {
+    width: 65%;
+  }
+  .profile-stats span {
+    margin: 10px;
+  }
+  .profile-stats p:nth-of-type(2){
+    font-size: 12px;
+  }
+  .profile-stats p:nth-of-type(3){
+    margin-top: 10px;
+  }
+  .edit-buttons {
+    display: inline-block;
+  }
+  .login-form-row {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 /* =============== TABLET (> 900) =============== */
@@ -423,6 +559,9 @@ footer > p {
     padding: 10px 16px 10px 16px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
   }
   .login-reg-header {
     width: 60%;
@@ -465,27 +604,3 @@ Pantone: Dazzling Blue #444A9E source: https://www.pantone.com/color-of-the-year
 Light Grey: #EEEEEE
 Med Grey: #CCCCCC
 Lightest Coral: #fcedea*/
-
-
-/* Edit User Porfile Form Style */
-.form-style-2{
-    max-width: 500px;
-    padding: 20px 12px 10px 20px;
-    font: 13px Arial, Helvetica, sans-serif;
-}
-.form-style-2 label{
-    display: block;
-    margin: 0px 0px 15px 0px;
-}
-.form-style-2 label > span{
-    width: 100px;
-    font-weight: bold;
-    float: left;
-    padding-top: 8px;
-    padding-right: 5px;
-}
-
-.form-style-2 input.input-field{
-    width: 48%;
-
-}
