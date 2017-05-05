@@ -390,6 +390,13 @@ hr {
   margin: 0 auto;
   text-align: center;
 }
+.profile-image {
+  margin: 0 auto;
+  width: 200px;
+}
+.profile-image > img {
+  width: 100%;
+}
 .profile-image, .profile-image img {
   border-radius: 100%;
 }
