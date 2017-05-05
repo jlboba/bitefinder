@@ -211,10 +211,16 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       method: 'GET',
       url: '/zomato/' + controller.cityInput
     }).then(function(response){
-        controller.locationSuggestions = response.data.location_suggestions;
-        controller.isViewLocationResultsActive = true;
+        if (response.data.location_suggestions.length > 0){
+          controller.locationSuggestions = response.data.location_suggestions;
+          controller.isViewLocationResultsActive = true;
+          controller.noCities = false;
+        } else {
+            controller.isViewLocationResultsActive = true;
+            controller.noCities = true;
+        }
     }, function(){
-        console.log('error');
+        console.log(error);
     })
   };
 

@@ -10,11 +10,14 @@
 </div>
 <div id="location-results">
   <div ng-if="zomato.isViewLocationResultsActive">
-    <ul>
+    <ul ng-if="!zomato.noCities">
       <li ng-repeat="location in zomato.locationSuggestions">
         <a ng-click="zomato.findRestaurants(location.id);">{{location.name}}</a>
         <i class="fa fa-map-pin fa-lg" aria-hidden="true" ng-click="zomato.saveLocation(location);" ng-if="main.sessionActive"></i>
       </li>
+    </ul>
+    <ul ng-if="zomato.noCities">
+      <li>Can't find that city, please try again!</li>
     </ul>
   </div>
 </div>
