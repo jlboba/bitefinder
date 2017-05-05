@@ -16,6 +16,9 @@ body {
 main {
   background-color: #FFFFFF;
 }
+strong {
+  color: #444A9E;
+}
 input[type=submit], input[type=text], input[type=password] {
   display: block;
   font-size: 12px;
@@ -52,6 +55,7 @@ button {
   font-size: 12px;
   text-decoration: none;
   border-radius: 5px;
+  text-align: center;
 }
 /* =============== HEADER =============== */
 header {

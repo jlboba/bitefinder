@@ -299,7 +299,6 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
       }, function(){
           console.log('Failed in removing favorite restaurant');
       });
-
     } else {
       console.log('not logged in');
     }
@@ -311,7 +310,7 @@ app.controller('ZomatoController', ['$http', '$scope', function($http, $scope){
     this.isViewRestaurantActive = true;
     this.restaurantDetail = controller.foundRestaurants[ind].restaurant;
     if (this.restaurantDetail.featured_image === ''){
-      this.restaurantDetail.featured_image = "/img/yum.png";
+      this.restaurantDetail.featured_image = "/img/defaultrestaurant.png";
     }
   };
 

@@ -9,11 +9,10 @@
       <img src="{{zomato.restaurantDetail.featured_image}}"> <br/>
       <div id="modal-body">
         <p>{{zomato.restaurantDetail.location.address}} <br/>
-          Cuisines: {{zomato.restaurantDetail.cuisines}} <br/>
-          Cost: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
-          Price Range: {{zomato.restaurantDetail.price_range}} <br/>
-          User Rating: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)<br/>
-          {{zomato.restaurantDetail.user_rating.rating_text}} <br/>
+          <strong>Cuisines</strong>: {{zomato.restaurantDetail.cuisines}} <br/>
+          <strong>Cost</strong>: Average ${{zomato.restaurantDetail.average_cost_for_two}} for two people<br/>
+          <strong>Price Range</strong>: {{zomato.restaurantDetail.price_range}} <br/>
+          <strong>Rating</strong>: {{zomato.restaurantDetail.user_rating.aggregate_rating}}/5 ({{zomato.restaurantDetail.user_rating.votes}} votes)
         </p>
             <!-- BUTTONS -->
         <div>
