@@ -369,6 +369,20 @@ hr {
   margin: 0 auto;
   width: 100%;
 }
+.login-form {
+  width: 40%;
+  margin: 0 auto;
+}
+.login-form h3 {
+  width: 100%;
+  text-align: center;
+}
+.login-form input[type=text], .login-form input[type=password] {
+  width: 100%;
+}
+.login-form input[type="submit"] {
+  margin-top: 10px;
+}
 
 /* ============== USER PROFILE ============ */
 .profile-row {
@@ -420,7 +434,7 @@ hr {
 .edit-form input {
   display: inline;
 }
-.edit-form label, .edit-form span {
+.edit-form label, .edit-form span, .login-form span {
   font-size: 12px;
 }
 .edit-form-row {
@@ -531,6 +545,10 @@ footer > p {
   }
   .edit-buttons {
     display: inline-block;
+  }
+  .login-form-row {
+    display: flex;
+    justify-content: space-around;
   }
 }
 
